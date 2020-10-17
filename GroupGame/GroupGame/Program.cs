@@ -48,6 +48,7 @@ namespace GroupGame
         public static void SecondRoom()
         {
             //This is the method for the second location of the game
+            Console.WriteLine("You are in another room. Congratulations!");
         }
 
         public static void GameOver()
