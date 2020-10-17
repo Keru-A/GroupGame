@@ -24,5 +24,10 @@ namespace GroupGame
         {
             //This is the method for the first location of the game
         }
+
+        public static void SecondRoom()
+        {
+            //This is the method for the second location of the game
+        }
     }
 }
