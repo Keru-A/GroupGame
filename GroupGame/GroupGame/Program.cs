@@ -29,5 +29,10 @@ namespace GroupGame
         {
             //This is the method for the second location of the game
         }
+
+        public static void GameOver()
+        {
+            //This is the game over screen method
+        }
     }
 }
