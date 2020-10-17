@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data;
+using System.Threading;
 
 namespace GroupGame
 {
@@ -18,6 +20,8 @@ namespace GroupGame
         {
             //This is the method for the start screen
             Console.WriteLine("Welcome to the game!");
+            Thread.Sleep(500);
+            Console.Clear();
         }
 
         public static void FirstRoom()
@@ -54,6 +58,26 @@ namespace GroupGame
         public static void GameOver()
         {
             //This is the game over screen method
+            Console.WriteLine("You fell down a pit and died :(");
+            Console.WriteLine("Game Over");
+
+            //ask to play again
+            Console.WriteLine("Play again? Y/N");
+            string response = Console.ReadLine();
+
+            //if statement to check answer
+            if (response == "Y")
+            {
+                Console.Clear();
+                Start();
+                FirstRoom();
+            }
+
+            else
+            {
+                Console.WriteLine("Thanks for playing!");
+                Console.ReadLine();
+            }
         }
     }
 }
