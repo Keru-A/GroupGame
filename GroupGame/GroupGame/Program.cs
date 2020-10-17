@@ -23,6 +23,26 @@ namespace GroupGame
         public static void FirstRoom()
         {
             //This is the method for the first location of the game
+
+            //Beginning the game with simple input
+            Console.WriteLine("You are in a room!");
+            Console.WriteLine("What now? Use north south east and west to navigate!");
+            string response = Console.ReadLine();
+
+            //swicth to interpret the user input
+            switch (response)
+            {
+                case "north":
+                    SecondRoom();
+                    break;
+                case "south":
+                case "west":
+                case "east":
+                    GameOver();
+                    break;
+                default:
+                    break;
+            }
         }
 
         public static void SecondRoom()
