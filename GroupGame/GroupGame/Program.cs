@@ -9,13 +9,22 @@ namespace GroupGame
 {
     class Program
     {
-        public static string[] Inventory = new string[10];
+        //Inventory struct to store information with each item
+        public struct Inventory
+        {
+            public string Name;
+            public string Desc;
+        }
         static void Main()
         {
+            //Inventory array called Items. Remember to reference in method to be able to use the inventory.
+            Inventory[] Items = new Inventory[10];
             //call the start screen
             Start();
             //call the first room which begins the game
-            FirstRoom();
+            //FirstRoom(Items);
+            //Calling second room to test inventory function temporarily until first room is complete
+            SecondRoom(Items);
             Console.ReadLine();
             
         }
@@ -55,7 +64,7 @@ namespace GroupGame
             Thread.Sleep(500);
             Console.WriteLine("");
             Console.WriteLine("Down a rabbit hole?");
-            Thread.Sleep(500);
+            Thread.Sleep(800);
             Console.WriteLine("As your consciousness returns and your eyes reluctantly open you become aware of the lack of ground beneath your feet.");
             Console.WriteLine("With a confused wave of your arms you manevuer yourself upright, or at least what you think is upright, as you try to take in your slow moving surroundings. You are slowly falling down.");
             Console.WriteLine("and down.");
@@ -67,7 +76,7 @@ namespace GroupGame
 
         }
 
-        public static void FirstRoom()
+        public static void FirstRoom(Inventory[] Items)
         {
             //This is the method for the first location of the game
 
@@ -91,7 +100,7 @@ namespace GroupGame
                 {
                     Console.WriteLine("The locked door is open!");
                     key -= 1;     //(Change the keys into a item if inventory is finished)
-                    SecondRoom();
+                    SecondRoom(Items);
                 }
                 else
                 {
@@ -118,21 +127,33 @@ namespace GroupGame
             }
         }
 
-        public static void SecondRoom()
+        public static void SecondRoom(Inventory[] Items)
         {
             //This is the method for the second location of the game
-            Console.WriteLine("");
-
-            Console.WriteLine("there is a potion on the ground");
+            Console.WriteLine("there is a potion");
             string response = Console.ReadLine();
+            Items[0].Name = "key"; //this is to test if the program can check an array entry is filled and fill the next one
 
+            int count = 0;
             if (response == "get potion")
             {
-                Inventory[0] = "potion";
-                Console.WriteLine(Inventory[0]);
-                Console.ReadLine();
+                if (Items[count].Name == null) //check if array is empty in order to pick up potion
+                {
+                    Items[count].Name = "potion";
+                    Items[count].Desc = "health potion";
+                }
+
+                else //if the array is not empty it will increase count and fill
+                {
+                    count = count + 1;
+                    Items[count].Name = "potion";
+                    Items[count].Desc = "health potion";
+                }
+
+                Console.WriteLine(Items[0].Name);
+                Console.WriteLine(Items[1].Name);
+                Console.ReadLine(); //testing the arrays are filled
             }
-            
         }
 
         public static void FourthRoom()
@@ -161,7 +182,7 @@ namespace GroupGame
             } 
         }
 
-        public static void GameOver()
+        public static void GameOver(Inventory[] Items)
         {
             //This is the game over screen method
             Console.WriteLine("You fell down a pit and died :(");
@@ -176,7 +197,7 @@ namespace GroupGame
             {
                 Console.Clear();
                 Start();
-                FirstRoom();
+                FirstRoom(Items);
             }
 
             else
