@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Data;
+using System.Dynamic;
 using System.Threading;
 
 namespace GroupGame
 {
     class Program
     {
+        public static string[] Inventory = new string[10];
         static void Main(string[] args)
         {
             //call the start screen
@@ -33,7 +35,7 @@ namespace GroupGame
             Console.WriteLine("What now? Use north south east and west to navigate!");
             string response = Console.ReadLine();
 
-            //swicth to interpret the user input
+            //switch to interpret the user input
             switch (response)
             {
                 case "north":
@@ -53,6 +55,16 @@ namespace GroupGame
         {
             //This is the method for the second location of the game
             Console.WriteLine("You are in another room. Congratulations!");
+
+            Console.WriteLine("there is a potion on the ground");
+            string response = Console.ReadLine();
+
+            if (response == "get potion")
+            {
+                Inventory[0] = "potion";
+                Console.WriteLine(Inventory[0]);
+                Console.ReadLine();
+            }
         }
 
         public static void GameOver()
