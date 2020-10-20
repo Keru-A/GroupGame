@@ -9,7 +9,6 @@ namespace GroupGame
     class Program
     {
         public static string[] Inventory = new string[10];
-        static void Main(string[] args)
         static void Main()
         {
             //call the start screen
@@ -38,8 +37,6 @@ namespace GroupGame
             string response = Console.ReadLine();
             int key = 0;     //(Change the keys into a item if inventory is finished)
 
-            //switch to interpret the user input
-            switch (response)
             //If statements to interpret the user input
             //get item
             if (response == "get key")
