@@ -40,7 +40,7 @@ namespace GroupGame
                                                                                                                
             ");     
             Console.WriteLine("");
-            Console.WriteLine("A game by Alice Dowle, Saniya Vahora, Harry Wallance and Pan Zhi");
+            Console.WriteLine("A game by Alice Dowle, Saniya Vahora, Harry Wallace and Pan Zhi");
             Console.ReadLine();
             Console.Clear();
 
@@ -121,7 +121,7 @@ namespace GroupGame
         public static void SecondRoom()
         {
             //This is the method for the second location of the game
-            Console.WriteLine("You are in another room. Congratulations!");
+            Console.WriteLine("");
 
             Console.WriteLine("there is a potion on the ground");
             string response = Console.ReadLine();
