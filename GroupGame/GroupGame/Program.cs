@@ -2,6 +2,7 @@
 using System.Data;
 using System.Dynamic;
 using System.Globalization;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
 
 namespace GroupGame
@@ -22,9 +23,48 @@ namespace GroupGame
         public static void Start()
         {
             //This is the method for the start screen
-            Console.WriteLine("Welcome to the game!");
-            Thread.Sleep(500);
+            Console.WriteLine("");
+            Console.WriteLine(@"
+                          __          __  _                            _                                       
+                          \ \        / / | |                          | |                                      
+                           \ \  /\  / /__| | ___ ___  _ __ ___   ___  | |_ ___                                 
+                            \ \/  \/ / _ \ |/ __/ _ \| '_ ` _ \ / _ \ | __/ _ \                                
+                             \  /\  /  __/ | (_| (_) | | | | | |  __/ | || (_) |                               
+ __          __             _ \/  \/ \___|_|\___\___/|_| |_| |_|\___|  \__\___/             _                  
+ \ \        / /            | |         | |               | |     /\      | |               | |                 
+  \ \  /\  / /__  _ __   __| | ___ _ __| | __ _ _ __   __| |    /  \   __| |_   _____ _ __ | |_ _   _ _ __ ___ 
+   \ \/  \/ / _ \| '_ \ / _` |/ _ \ '__| |/ _` | '_ \ / _` |   / /\ \ / _` \ \ / / _ \ '_ \| __| | | | '__/ _ \
+    \  /\  / (_) | | | | (_| |  __/ |  | | (_| | | | | (_| |  / ____ \ (_| |\ V /  __/ | | | |_| |_| | | |  __/
+     \/  \/ \___/|_| |_|\__,_|\___|_|  |_|\__,_|_| |_|\__,_| /_/    \_\__,_| \_/ \___|_| |_|\__|\__,_|_|  \___|
+                                                                                                               
+                                                                                                               
+            ");     
+            Console.WriteLine("");
+            Console.WriteLine("A game by Alice Dowle, Saniya Vahora, Harry Wallance and Pan Zhi");
+            Console.ReadLine();
             Console.Clear();
+
+            //intro sequence to flow into the first room
+            Console.Write("You're falling");
+            Thread.Sleep(500);
+            Console.Write(".");
+            Thread.Sleep(500);
+            Console.Write(".");
+            Thread.Sleep(500);
+            Console.WriteLine(".");
+            Thread.Sleep(500);
+            Console.WriteLine("");
+            Console.WriteLine("Down a rabbit hole?");
+            Thread.Sleep(500);
+            Console.WriteLine("As your consciousness returns and your eyes reluctantly open you become aware of the lack of ground beneath your feet.");
+            Console.WriteLine("With a confused wave of your arms you manevuer yourself upright, or at least what you think is upright, as you try to take in your slow moving surroundings. You are slowly falling down.");
+            Console.WriteLine("and down.");
+            Console.WriteLine("and down.");
+            Console.WriteLine("The bottom of this chasm seems nowhere in sight nor are you in a hurry so you may aswell enjoy the perculiar sights covering the cavern walls. There's clocks, chairs, mirrors and upside down stairs");
+            Console.WriteLine("You haven't as much time as you thought to grow accustomed with your new falling state of being as suddenly you feel your feet touch the floor.");
+            Console.ReadLine();
+            Console.Clear();
+
         }
 
         public static void FirstRoom()
