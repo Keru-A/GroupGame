@@ -6,7 +6,7 @@ namespace GroupGame
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             //call the start screen
             Start();
@@ -29,23 +29,49 @@ namespace GroupGame
             //This is the method for the first location of the game
 
             //Beginning the game with simple input
-            Console.WriteLine("You are in a room!");
+            Console.WriteLine("You are in a room! You can see a key inside the room.");
             Console.WriteLine("What now? Use north south east and west to navigate!");
             string response = Console.ReadLine();
+            int key = 0;     //(Change the keys into a item if inventory is finished)
 
-            //swicth to interpret the user input
-            switch (response)
+            //If statements to interpret the user input
+            //get item
+            if (response == "get key")
             {
-                case "north":
+                Console.WriteLine("You got a key. The shape of this sliver key has a very old design.");
+                key += 1;     //(Change the keys into a item if inventory is finished)
+            }
+            //correct way to enter next room
+            else if (response == "east")
+            {
+                if (key == 1)     //(Change the keys into a item if inventory is finished)
+                {
+                    Console.WriteLine("The locked door is open!");
+                    key -= 1;     //(Change the keys into a item if inventory is finished)
                     SecondRoom();
-                    break;
-                case "south":
-                case "west":
-                case "east":
-                    GameOver();
-                    break;
-                default:
-                    break;
+                }
+                else
+                {
+                    Console.WriteLine("You see a door in front of you. But it is locked.");
+                    Console.WriteLine("Try to find something to unlock it.");
+                }
+            }
+            //other ways
+            else if (response == "north")
+            {
+
+            }
+            else if (response == "south")
+            {
+                Console.WriteLine("There is nothing except a wall.");
+            }
+            else if (response == "west")
+            {
+
+            }
+            else
+            {
+                AliceDonotUnderstand();
             }
         }
 
@@ -78,6 +104,12 @@ namespace GroupGame
                 Console.WriteLine("Thanks for playing!");
                 Console.ReadLine();
             }
+        }
+        public static void AliceDonotUnderstand()
+        {
+            //This is 
+            Random rand = new Random();
+            int temp = rand.Next(1, 5);
         }
     }
 }
