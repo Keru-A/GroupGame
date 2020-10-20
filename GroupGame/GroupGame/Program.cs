@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Globalization;
 using System.Threading;
 
 namespace GroupGame
@@ -79,6 +80,33 @@ namespace GroupGame
         {
             //This is the method for the second location of the game
             Console.WriteLine("You are in another room. Congratulations!");
+            
+        }
+
+        public static void FourthRoom()
+        {
+            //This is the method for the fourth room of the game
+            Console.WriteLine("You reach the top of the stairs and enter another room with 4 doors");
+            Console.ReadLine();
+            Console.WriteLine("There are 3 doors grouped together along the east wall and the other door resides on the south wall by itself");
+            Console.ReadLine();
+            Console.WriteLine("Will you go east or south?");
+            string rm4Answer = Console.ReadLine();
+
+         
+            {
+                if (rm4Answer == "east")
+                {
+                    Console.WriteLine("You approach the three mysterious looking doors...");
+                    Console.ReadLine();
+                }
+                else if (rm4Answer == "south")
+                {
+                    Console.WriteLine("You approach the single door");
+                    Console.ReadLine();
+                }
+              
+            } 
         }
 
         public static void GameOver()
