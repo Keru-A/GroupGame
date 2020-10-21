@@ -18,13 +18,12 @@ namespace GroupGame
         static void Main()
         {
             //Inventory array called Items. Remember to reference in method to be able to use the inventory.
-            Inventory[] Items = new Inventory[10];
+            Inventory[] Items = new Inventory[6];
+            // items designated slots - key 1, drink me bottle 2, eat me cake 3, 
             //call the start screen
             Start();
             //call the first room which begins the game
-            //FirstRoom(Items);
-            //Calling second room to test inventory function temporarily until first room is complete
-            SecondRoom(Items);
+            FirstRoom(Items);
             Console.ReadLine();
             
         }
@@ -70,7 +69,7 @@ namespace GroupGame
             Console.WriteLine("and down.");
             Console.WriteLine("and down.");
             Console.WriteLine("The bottom of this chasm seems nowhere in sight nor are you in a hurry so you may aswell enjoy the perculiar sights covering the cavern walls. There's clocks, chairs, mirrors and upside down stairs");
-            Console.WriteLine("You haven't as much time as you thought to grow accustomed with your new falling state of being as suddenly you feel your feet touch the floor.");
+            Console.WriteLine("You haven't as much time as you thought to grow accustomed with your new falling state of being because suddenly you feel your feet touch the floor.");
             Console.ReadLine();
             Console.Clear();
 
@@ -81,78 +80,185 @@ namespace GroupGame
             //This is the method for the first location of the game
 
             //Beginning the game with simple input
-            Console.WriteLine("You are in a room! You can see a key inside the room.");
+            Console.WriteLine("You are in a room! There is a locked door in front of you. You can see a key inside the room.");
             Console.WriteLine("What now? Use north south east and west to navigate!");
             string response = Console.ReadLine();
-            int key = 0;     //(Change the keys into a item if inventory is finished)
+            response = response.ToLower(); // convert input to lowercase for error control
 
-            //If statements to interpret the user input
-            //get item
-            if (response == "get key")
+
+            //switch to interpert user input
+            switch (response)
             {
-                Console.WriteLine("You got a key. The shape of this sliver key has a very old design.");
-                key += 1;     //(Change the keys into a item if inventory is finished)
-            }
-            //correct way to enter next room
-            else if (response == "east")
-            {
-                if (key == 1)     //(Change the keys into a item if inventory is finished)
-                {
-                    Console.WriteLine("The locked door is open!");
-                    key -= 1;     //(Change the keys into a item if inventory is finished)
-                    SecondRoom(Items);
-                }
-                else
-                {
-                    Console.WriteLine("You see a door in front of you. But it is locked.");
-                    Console.WriteLine("Try to find something to unlock it.");
-                }
-            }
-            //other ways
-            else if (response == "north")
-            {
+                case "get key":
+                case "key":
+                case "pickup key":
+                    Items[1].Name = "key";
+                    Items[1].Desc = "An old fashioned key. I wonder what it unlocks?";
+                    Console.WriteLine("You picked up the key!");
+                    Console.WriteLine("");
+                    FirstRoom(Items); // insert key item into items array then call the beginning of the room back
+                    break;
+                case "north":
+                case "go north":
+                case "walk north":
+                case "door":
+                    // if statement to check if user has key in inventory
+                    if (Items[1].Name == "key")
+                    {
+                        Console.WriteLine("The door unlocked!");
+                        Console.WriteLine("");
+                        SecondRoom(Items);
+                    }
+
+                    else
+                    {
+                        Console.WriteLine("The door is locked. Maybe there is a key");
+                        Console.WriteLine("");
+                        FirstRoom(Items);
+                    }
+                    break;
+                    // control for if the user goes the wrong direction
+                case "east":
+                case "go east":
+                case "walk east":
+                    Console.WriteLine("There is nowhere to go in that direction");
+                    Console.WriteLine("");
+                    FirstRoom(Items);
+                    break;
+                case "west":
+                case "go west":
+                case "walk west":
+                    Console.WriteLine("There is nowhere to go in that direction");
+                    Console.WriteLine("");
+                    FirstRoom(Items);
+                    break;
+                case "south":
+                case "go south":
+                case "walk south":
+                    Console.WriteLine("There is nowhere to go in that direction");
+                    Console.WriteLine("");
+                    FirstRoom(Items);
+                    break;
+                    // option for the user to check their inventory by calling inventory display method
+                case "i":
+                case "inventory":
+                case "items":
+                    InventoryDisplay(Items);
+                    Console.ReadLine();
+                    FirstRoom(Items);
+                    break;
 
             }
-            else if (response == "south")
-            {
-                Console.WriteLine("There is nothing except a wall.");
-            }
-            else if (response == "west")
-            {
 
-            }
-            else
-            {
-                AliceDonotUnderstand();
-            }
         }
 
         public static void SecondRoom(Inventory[] Items)
         {
-            //This is the method for the second location of the game
-            Console.WriteLine("there is a potion");
+            //This is the method for the second room of the game
+            Console.WriteLine("You are in a new room."); // Pan: the description of new room needed in here!
+            Console.WriteLine("You see a bottle of water with notes which says 'Drink me', and a box of cupcakes with notes which says 'Eat me'.");
+            Console.WriteLine("What next? Use north south east and west to navigate!");
             string response = Console.ReadLine();
-            Items[0].Name = "key"; //this is to test if the program can check an array entry is filled and fill the next one
+            response = response.ToLower(); // convert input to lowercase for error control
 
-            int count = 0;
-            if (response == "get potion")
+
+            // switch to interpert user input
+            switch (response)
             {
-                if (Items[count].Name == null) //check if array is empty in order to pick up potion
-                {
-                    Items[count].Name = "potion";
-                    Items[count].Desc = "health potion";
-                }
+                case "get water":
+                case "water":
+                case "pickup water":
+                case "get bottle":
+                case "bottle":
+                case "pickup bottle":
+                case "get the bottle of water":
+                    Items[2].Name = "Drink me bottle";
+                    Items[2].Desc = "It seems dosen't like normal water.";
+                    Console.WriteLine("You picked up a Drink me bottle!");
+                    Console.WriteLine("");
+                    SecondRoom(Items); // insert key item into items array then call the beginning of the room back
+                    break;
 
-                else //if the array is not empty it will increase count and fill
-                {
-                    count = count + 1;
-                    Items[count].Name = "potion";
-                    Items[count].Desc = "health potion";
-                }
+                case "get box":
+                case "box":
+                case "pickup box":
+                case "get cupcake":
+                case "cupcake":
+                case "pickup cupcake":
+                case "get the box of cupcakes":
+                    Items[3].Name = "Eat me cupcake";
+                    Items[3].Desc = "It seems dosen't like normal cupcake.";
+                    Console.WriteLine("You picked up a Eat me cupcake!");
+                    Console.WriteLine("");
+                    SecondRoom(Items); // insert key item into items array then call the beginning of the room back
+                    break;
 
-                Console.WriteLine(Items[0].Name);
-                Console.WriteLine(Items[1].Name);
-                Console.ReadLine(); //testing the arrays are filled
+                case "north":
+                case "go north":
+                case "walk north":
+                case "tiny door":
+                    // if statement to check if user used the Drink me bottle
+                    Console.WriteLine("There is a small door.");
+                    if (Items[1].Name == "key") // need to be fix
+                    {
+                        Console.WriteLine("You are smaller enough. Now you can easily pass this door.");
+                        Console.WriteLine("");
+                        ThirdRoom(Items);
+                    }
+                    else
+                    {
+                        Console.WriteLine("The door is too small for you. You can only put your finger in.");
+                        Console.WriteLine("");
+                        SecondRoom(Items);
+                    }
+                    break;
+
+                // hidden room
+                case "east":
+                case "go east":
+                case "walk east":
+                    Console.WriteLine("There is nowhere to go in that direction");
+                    Console.WriteLine("");
+                    SecondRoom(Items);
+                    break;
+
+                // control for if the user goes the wrong direction
+                case "west":
+                case "go west":
+                case "walk west":
+                    Console.WriteLine("There is nowhere to go in that direction");
+                    Console.WriteLine("");
+                    SecondRoom(Items);
+                    break;
+                case "south":
+                case "go south":
+                case "walk south":
+                    Console.WriteLine("You ");
+                    Console.WriteLine("");
+                    SecondRoom(Items);
+                    break;
+
+                // option for the user to check their inventory by calling inventory display method
+                case "i":
+                case "inventory":
+                case "items":
+                    InventoryDisplay(Items);
+                    Console.ReadLine();  // Pan: I think we can move this pause command into the method.
+                    SecondRoom(Items);
+                    break;
+
+                // option for the user to get some help by calling tips display method
+                case "t":
+                case "tips":
+                case "help":
+                    tips();
+                    SecondRoom(Items);
+                    break;
+
+                default:
+                    AliceDonotUnderstand();
+                    SecondRoom(Items);
+                    break;
             }
         }
 
@@ -206,11 +312,56 @@ namespace GroupGame
                 Console.ReadLine();
             }
         }
+
+        public static void tips()
+        {
+            // when user needs help with what they want to enter, use this method
+            Console.WriteLine("Enter north(n), south(s), west(w), east(e) to let Alice moving into different place.");
+            Console.WriteLine("To get some items, type 'get' + the name of the item you want to get.");
+            Console.ReadLine();
+        }
+
         public static void AliceDonotUnderstand()
         {
-            //This is 
+            //when user typing anything which is not in switch cases, use this method
             Random rand = new Random();
             int temp = rand.Next(1, 5);
+            switch(temp)
+            {
+                case 1:
+                    Console.WriteLine("Alice is just a child. She doesn't understand what you said.");
+                    break;
+                case 2:
+                    Console.WriteLine("Alice seems confused.");
+                    break;
+                case 3:
+                    Console.WriteLine("Alice doesn't understand what you said. Please try again.");
+                    break;
+                case 4:
+                    Console.WriteLine("She doesn't know what she wants to do.");
+                    break;
+                case 5:
+                    Console.WriteLine("'I cannot understand what it is.' Alice said.");
+                    break;
+            }
+            Console.ReadLine();
+        }
+
+        public static void InventoryDisplay(Inventory[] Items)
+        {
+            //inventory display method. Call this for the user to view the inventory contents
+            Console.Write("Items".PadRight(10));
+            Console.WriteLine("Description".PadRight(10));
+            Console.Write($"- {Items[1].Name} -".PadRight(10));
+            Console.WriteLine($"- {Items[1].Desc} -".PadRight(10));
+            Console.Write($"- {Items[2].Name} -".PadRight(10));
+            Console.WriteLine($"- {Items[2].Desc} -".PadRight(10));
+            Console.Write($"- {Items[3].Name} -".PadRight(10));
+            Console.WriteLine($"- {Items[3].Desc} -".PadRight(10));
+            Console.Write($"- {Items[4].Name} -".PadRight(10));
+            Console.WriteLine($"- {Items[4].Desc} -".PadRight(10));
+            Console.Write($"- {Items[5].Name} -".PadRight(10));
+            Console.WriteLine($"- {Items[5].Desc} -".PadRight(10));
         }
     }
 }
