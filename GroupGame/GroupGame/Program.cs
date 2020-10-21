@@ -147,12 +147,14 @@ namespace GroupGame
                     InventoryDisplay(Items);
                     FirstRoom(Items);
                     break;
+                    // option for user to get help if confused
                 case "t":
                 case "tips":
                 case "help":
                     tips();
                     FirstRoom(Items);
                     break;
+                    // in case the user inputs something the program cannot understand
                 default:
                     AliceDonotUnderstand();
                     FirstRoom(Items);
@@ -365,18 +367,18 @@ namespace GroupGame
         public static void InventoryDisplay(Inventory[] Items)
         {
             //inventory display method. Call this for the user to view the inventory contents
-            Console.Write("Items".PadRight(10));
-            Console.WriteLine("Description".PadRight(10));
-            Console.Write($"- {Items[1].Name} -".PadRight(10));
-            Console.WriteLine($"- {Items[1].Desc} -".PadRight(10));
-            Console.Write($"- {Items[2].Name} -".PadRight(10));
-            Console.WriteLine($"- {Items[2].Desc} -".PadRight(10));
-            Console.Write($"- {Items[3].Name} -".PadRight(10));
-            Console.WriteLine($"- {Items[3].Desc} -".PadRight(10));
-            Console.Write($"- {Items[4].Name} -".PadRight(10));
-            Console.WriteLine($"- {Items[4].Desc} -".PadRight(10));
-            Console.Write($"- {Items[5].Name} -".PadRight(10));
-            Console.WriteLine($"- {Items[5].Desc} -".PadRight(10));
+            Console.Write("Items".PadRight(20));
+            Console.WriteLine("Description".PadRight(20));
+            Console.Write($"- {Items[1].Name} -".PadRight(20));
+            Console.WriteLine($"- {Items[1].Desc} -".PadRight(20));
+            Console.Write($"- {Items[2].Name} -".PadRight(20));
+            Console.WriteLine($"- {Items[2].Desc} -".PadRight(20));
+            Console.Write($"- {Items[3].Name} -".PadRight(20));
+            Console.WriteLine($"- {Items[3].Desc} -".PadRight(20));
+            Console.Write($"- {Items[4].Name} -".PadRight(20));
+            Console.WriteLine($"- {Items[4].Desc} -".PadRight(20));
+            Console.Write($"- {Items[5].Name} -".PadRight(20));
+            Console.WriteLine($"- {Items[5].Desc} -".PadRight(20));
             Console.ReadLine();
         }
     }
