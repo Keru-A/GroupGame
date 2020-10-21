@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.Design;
 using System.Data;
 using System.Dynamic;
 using System.Globalization;
@@ -144,7 +145,16 @@ namespace GroupGame
                 case "inventory":
                 case "items":
                     InventoryDisplay(Items);
-                    Console.ReadLine();
+                    FirstRoom(Items);
+                    break;
+                case "t":
+                case "tips":
+                case "help":
+                    tips();
+                    FirstRoom(Items);
+                    break;
+                default:
+                    AliceDonotUnderstand();
                     FirstRoom(Items);
                     break;
 
@@ -243,7 +253,7 @@ namespace GroupGame
                 case "inventory":
                 case "items":
                     InventoryDisplay(Items);
-                    Console.ReadLine();  // Pan: I think we can move this pause command into the method.
+  // Pan: I think we can move this pause command into the method.
                     SecondRoom(Items);
                     break;
 
@@ -260,6 +270,11 @@ namespace GroupGame
                     SecondRoom(Items);
                     break;
             }
+        }
+
+        public static void ThirdRoom(Inventory[] Items)
+        {
+
         }
 
         public static void FourthRoom()
@@ -362,6 +377,7 @@ namespace GroupGame
             Console.WriteLine($"- {Items[4].Desc} -".PadRight(10));
             Console.Write($"- {Items[5].Name} -".PadRight(10));
             Console.WriteLine($"- {Items[5].Desc} -".PadRight(10));
+            Console.ReadLine();
         }
     }
 }
