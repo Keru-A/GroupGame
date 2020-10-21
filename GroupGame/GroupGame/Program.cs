@@ -18,7 +18,7 @@ namespace GroupGame
         static void Main()
         {
             //Inventory array called Items. Remember to reference in method to be able to use the inventory.
-            Inventory[] Items = new Inventory[10];
+            Inventory[] Items = new Inventory[6];
             // items designated slots - key 1, drink me bottle 2, eat me cake 3, 
             //call the start screen
             Start();
@@ -83,7 +83,7 @@ namespace GroupGame
             Console.WriteLine("You are in a room! There is a locked door in front of you. You can see a key inside the room.");
             Console.WriteLine("What now? Use north south east and west to navigate!");
             string response = Console.ReadLine();
-            response = response.ToLower();
+            response = response.ToLower(); // convert input to lowercase for error control
 
 
             //switch to interpert user input
@@ -95,42 +95,69 @@ namespace GroupGame
                     Items[1].Name = "key";
                     Items[1].Desc = "An old fashioned key. I wonder what it unlocks?";
                     Console.WriteLine("You picked up the key!");
-                    FirstRoom(Items);
+                    Console.WriteLine("");
+                    FirstRoom(Items); // insert key item into items array then call the beginning of the room back
                     break;
                 case "north":
                 case "go north":
                 case "walk north":
                 case "door":
+                    // if statement to check if user has key in inventory
                     if (Items[1].Name == "key")
                     {
                         Console.WriteLine("The door unlocked!");
+                        Console.WriteLine("");
                         SecondRoom(Items);
                     }
 
                     else
                     {
                         Console.WriteLine("The door is locked. Maybe there is a key");
+                        Console.WriteLine("");
                         FirstRoom(Items);
                     }
                     break;
+                    // control for if the user goes the wrong direction
                 case "east":
                 case "go east":
                 case "walk east":
                     Console.WriteLine("There is nowhere to go in that direction");
+                    Console.WriteLine("");
                     FirstRoom(Items);
                     break;
                 case "west":
                 case "go west":
                 case "walk west":
                     Console.WriteLine("There is nowhere to go in that direction");
+                    Console.WriteLine("");
                     FirstRoom(Items);
                     break;
                 case "south":
                 case "go south":
                 case "walk south":
                     Console.WriteLine("There is nowhere to go in that direction");
+                    Console.WriteLine("");
                     FirstRoom(Items);
                     break;
+                case "i":
+                case "inventory":
+                case "items":
+                    Console.Write("Items".PadRight(10));
+                    Console.WriteLine("Description".PadRight(10));
+                    Console.Write($"- {Items[1].Name} -".PadRight(10));
+                    Console.WriteLine($"- {Items[1].Desc} -".PadRight(10));
+                    Console.Write($"- {Items[2].Name} -".PadRight(10));
+                    Console.WriteLine($"- {Items[2].Desc} -".PadRight(10));
+                    Console.Write($"- {Items[3].Name} -".PadRight(10));
+                    Console.WriteLine($"- {Items[3].Desc} -".PadRight(10));
+                    Console.Write($"- {Items[4].Name} -".PadRight(10));
+                    Console.WriteLine($"- {Items[4].Desc} -".PadRight(10));
+                    Console.Write($"- {Items[5].Name} -".PadRight(10));
+                    Console.WriteLine($"- {Items[5].Desc} -".PadRight(10));
+                    Console.ReadLine();
+                    FirstRoom(Items);
+                    break;
+
             }
 
         }
