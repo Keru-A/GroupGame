@@ -19,12 +19,11 @@ namespace GroupGame
         {
             //Inventory array called Items. Remember to reference in method to be able to use the inventory.
             Inventory[] Items = new Inventory[10];
+            // items designated slots - key 1, drink me bottle 2, eat me cake 3, 
             //call the start screen
             Start();
             //call the first room which begins the game
-            //FirstRoom(Items);
-            //Calling second room to test inventory function temporarily until first room is complete
-            SecondRoom(Items);
+            FirstRoom(Items);
             Console.ReadLine();
             
         }
@@ -70,7 +69,7 @@ namespace GroupGame
             Console.WriteLine("and down.");
             Console.WriteLine("and down.");
             Console.WriteLine("The bottom of this chasm seems nowhere in sight nor are you in a hurry so you may aswell enjoy the perculiar sights covering the cavern walls. There's clocks, chairs, mirrors and upside down stairs");
-            Console.WriteLine("You haven't as much time as you thought to grow accustomed with your new falling state of being as suddenly you feel your feet touch the floor.");
+            Console.WriteLine("You haven't as much time as you thought to grow accustomed with your new falling state of being because suddenly you feel your feet touch the floor.");
             Console.ReadLine();
             Console.Clear();
 
@@ -81,50 +80,59 @@ namespace GroupGame
             //This is the method for the first location of the game
 
             //Beginning the game with simple input
-            Console.WriteLine("You are in a room! You can see a key inside the room.");
+            Console.WriteLine("You are in a room! There is a locked door in front of you. You can see a key inside the room.");
             Console.WriteLine("What now? Use north south east and west to navigate!");
             string response = Console.ReadLine();
-            int key = 0;     //(Change the keys into a item if inventory is finished)
+            response = response.ToLower();
 
-            //If statements to interpret the user input
-            //get item
-            if (response == "get key")
-            {
-                Console.WriteLine("You got a key. The shape of this sliver key has a very old design.");
-                key += 1;     //(Change the keys into a item if inventory is finished)
-            }
-            //correct way to enter next room
-            else if (response == "east")
-            {
-                if (key == 1)     //(Change the keys into a item if inventory is finished)
-                {
-                    Console.WriteLine("The locked door is open!");
-                    key -= 1;     //(Change the keys into a item if inventory is finished)
-                    SecondRoom(Items);
-                }
-                else
-                {
-                    Console.WriteLine("You see a door in front of you. But it is locked.");
-                    Console.WriteLine("Try to find something to unlock it.");
-                }
-            }
-            //other ways
-            else if (response == "north")
-            {
 
-            }
-            else if (response == "south")
+            //switch to interpert user input
+            switch (response)
             {
-                Console.WriteLine("There is nothing except a wall.");
-            }
-            else if (response == "west")
-            {
+                case "get key":
+                case "key":
+                case "pickup key":
+                    Items[1].Name = "key";
+                    Items[1].Desc = "An old fashioned key. I wonder what it unlocks?";
+                    Console.WriteLine("You picked up the key!");
+                    FirstRoom(Items);
+                    break;
+                case "north":
+                case "go north":
+                case "walk north":
+                case "door":
+                    if (Items[1].Name == "key")
+                    {
+                        Console.WriteLine("The door unlocked!");
+                        SecondRoom(Items);
+                    }
 
+                    else
+                    {
+                        Console.WriteLine("The door is locked. Maybe there is a key");
+                        FirstRoom(Items);
+                    }
+                    break;
+                case "east":
+                case "go east":
+                case "walk east":
+                    Console.WriteLine("There is nowhere to go in that direction");
+                    FirstRoom(Items);
+                    break;
+                case "west":
+                case "go west":
+                case "walk west":
+                    Console.WriteLine("There is nowhere to go in that direction");
+                    FirstRoom(Items);
+                    break;
+                case "south":
+                case "go south":
+                case "walk south":
+                    Console.WriteLine("There is nowhere to go in that direction");
+                    FirstRoom(Items);
+                    break;
             }
-            else
-            {
-                AliceDonotUnderstand();
-            }
+
         }
 
         public static void SecondRoom(Inventory[] Items)
