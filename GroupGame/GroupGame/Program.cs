@@ -139,21 +139,11 @@ namespace GroupGame
                     Console.WriteLine("");
                     FirstRoom(Items);
                     break;
+                    // option for the user to check their inventory by calling inventory display method
                 case "i":
                 case "inventory":
                 case "items":
-                    Console.Write("Items".PadRight(10));
-                    Console.WriteLine("Description".PadRight(10));
-                    Console.Write($"- {Items[1].Name} -".PadRight(10));
-                    Console.WriteLine($"- {Items[1].Desc} -".PadRight(10));
-                    Console.Write($"- {Items[2].Name} -".PadRight(10));
-                    Console.WriteLine($"- {Items[2].Desc} -".PadRight(10));
-                    Console.Write($"- {Items[3].Name} -".PadRight(10));
-                    Console.WriteLine($"- {Items[3].Desc} -".PadRight(10));
-                    Console.Write($"- {Items[4].Name} -".PadRight(10));
-                    Console.WriteLine($"- {Items[4].Desc} -".PadRight(10));
-                    Console.Write($"- {Items[5].Name} -".PadRight(10));
-                    Console.WriteLine($"- {Items[5].Desc} -".PadRight(10));
+                    InventoryDisplay(Items);
                     Console.ReadLine();
                     FirstRoom(Items);
                     break;
@@ -246,6 +236,23 @@ namespace GroupGame
             //This is 
             Random rand = new Random();
             int temp = rand.Next(1, 5);
+        }
+
+        public static void InventoryDisplay(Inventory[] Items)
+        {
+            //inventory display method. Call this for the user to view the inventory contents
+            Console.Write("Items".PadRight(10));
+            Console.WriteLine("Description".PadRight(10));
+            Console.Write($"- {Items[1].Name} -".PadRight(10));
+            Console.WriteLine($"- {Items[1].Desc} -".PadRight(10));
+            Console.Write($"- {Items[2].Name} -".PadRight(10));
+            Console.WriteLine($"- {Items[2].Desc} -".PadRight(10));
+            Console.Write($"- {Items[3].Name} -".PadRight(10));
+            Console.WriteLine($"- {Items[3].Desc} -".PadRight(10));
+            Console.Write($"- {Items[4].Name} -".PadRight(10));
+            Console.WriteLine($"- {Items[4].Desc} -".PadRight(10));
+            Console.Write($"- {Items[5].Name} -".PadRight(10));
+            Console.WriteLine($"- {Items[5].Desc} -".PadRight(10));
         }
     }
 }
