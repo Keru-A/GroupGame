@@ -88,7 +88,7 @@ namespace GroupGame
 
             //Beginning the game with simple input
             Console.WriteLine("You are in a room! There is a locked door in front of you. You can see a key inside the room.");
-            Console.WriteLine("What now? Use north south east and west to navigate!");
+            Console.WriteLine("What now? Use north south east and west to navigate! Type help to get tips!");
             string response = Console.ReadLine();
             response = response.ToLower(); // convert input to lowercase for error control
 
@@ -157,7 +157,7 @@ namespace GroupGame
                 case "t":
                 case "tips":
                 case "help":
-                    tips();
+                    Tips(Items);
                     FirstRoom(Items);
                     break;
                     // in case the user inputs something the program cannot understand
@@ -184,6 +184,7 @@ namespace GroupGame
             switch (response)
             {
                 case "get water":
+                case "drink me":
                 case "water":
                 case "pickup water":
                 case "get bottle":
@@ -197,13 +198,15 @@ namespace GroupGame
                     SecondRoom(Items); // insert key item into items array then call the beginning of the room back
                     break;
 
-                case "get box":
+                case "get cake":
                 case "box":
                 case "pickup box":
                 case "get cupcake":
+                case "cupcakes":
                 case "cupcake":
                 case "pickup cupcake":
                 case "get the box of cupcakes":
+                case "cake":
                     Items[3].Name = "Eat me cupcake";
                     Items[3].Desc = "It seems dosen't like normal cupcake.";
                     Console.WriteLine("You picked up a Eat me cupcake!");
@@ -269,7 +272,7 @@ namespace GroupGame
                 case "t":
                 case "tips":
                 case "help":
-                    tips();
+                    Tips(Items);
                     SecondRoom(Items);
                     break;
 
@@ -282,7 +285,7 @@ namespace GroupGame
 
         public static void ThirdRoom(Inventory[] Items)
         {
-            Console.WriteLine("You are in a new room.");
+            Console.WriteLine("You are in a new room. There are huge stairs in front of you!");
             string response = Console.ReadLine();
             response = response.ToLower();
             switch (response)
@@ -295,14 +298,14 @@ namespace GroupGame
                     // if statement to check if user has key in inventory
                     if (Items[3].Name == "Eat me cupcake")
                     {
-                        Console.WriteLine("The door unlocked!");
+                        Console.WriteLine("You ate the cake you picked up and are big enough to climb the stairs. You can leave the room!");
                         Console.WriteLine("");
                         FourthRoom(Items);
                     }
 
                     else
                     {
-                        Console.WriteLine("The door is locked. Did you eat cupcake?");
+                        Console.WriteLine("You're too small!! How could you get bigger? Did you eat the cupcakes?");
                         Console.WriteLine("");
                         ThirdRoom(Items);
                     }
@@ -340,7 +343,7 @@ namespace GroupGame
                 case "t":
                 case "tips":
                 case "help":
-                    tips();
+                    Tips(Items);
                     ThirdRoom(Items);
                     break;
 
@@ -403,10 +406,11 @@ namespace GroupGame
             }
         }
 
-        public static void tips()
+        public static void Tips(Inventory[] Items)
         {
             // when user needs help with what they want to enter, use this method
             Console.WriteLine("Enter north(n), south(s), west(w), east(e) to let Alice moving into different place.");
+            Console.WriteLine("Use 'i' to check your inventory!");
             Console.WriteLine("To get some items, type 'get' + the name of the item you want to get.");
             Console.ReadLine();
         }
