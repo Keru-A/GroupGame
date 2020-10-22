@@ -18,6 +18,7 @@ namespace GroupGame
         }
         static void Main()
         {
+            bool Big, Small;
             //Inventory array called Items. Remember to reference in method to be able to use the inventory.
             Inventory[] Items = new Inventory[6];
             // items designated slots - key 1, drink me bottle 2, eat me cake 3, 
@@ -88,7 +89,9 @@ namespace GroupGame
 
             //Beginning the game with simple input
             Console.WriteLine("You are in a room! There is a locked door in front of you. You can see a key inside the room.");
+            Console.WriteLine("");
             Console.WriteLine("What now? Use north south east and west to navigate! Type help to get tips!");
+            Console.WriteLine("");
             string response = Console.ReadLine();
             response = response.ToLower(); // convert input to lowercase for error control
 
@@ -114,6 +117,7 @@ namespace GroupGame
                     {
                         Console.WriteLine("The door unlocked!");
                         Console.WriteLine("");
+                        Console.Clear();
                         SecondRoom(Items);
                     }
 
