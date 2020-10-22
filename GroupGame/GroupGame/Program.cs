@@ -282,10 +282,77 @@ namespace GroupGame
 
         public static void ThirdRoom(Inventory[] Items)
         {
-            
+            Console.WriteLine("You are in a new room.");
+            string response = Console.ReadLine();
+            response = response.ToLower();
+            switch (response)
+            {
+                case "north":
+                case "go north":
+                case "walk north":
+                case "door":
+
+                    // if statement to check if user has key in inventory
+                    if (Items[3].Name == "Eat me cupcake")
+                    {
+                        Console.WriteLine("The door unlocked!");
+                        Console.WriteLine("");
+                        FourthRoom(Items);
+                    }
+
+                    else
+                    {
+                        Console.WriteLine("The door is locked. Did you eat cupcake?");
+                        Console.WriteLine("");
+                        ThirdRoom(Items);
+                    }
+                    break;
+
+                case "east":
+                case "go east":
+                case "walk east":
+                    Console.WriteLine("There is nowhere to go in that direction");
+                    Console.WriteLine("");
+                    ThirdRoom(Items);
+                    break;
+                case "west":
+                case "go west":
+                case "walk west":
+                    Console.WriteLine("There is nowhere to go in that direction");
+                    Console.WriteLine("");
+                    ThirdRoom(Items);
+                    break;
+                case "south":
+                case "go south":
+                case "walk south":
+                    Console.WriteLine("");
+                    SecondRoom(Items);
+                    break;
+
+                case "i":
+                case "inventory":
+                case "items":
+                    InventoryDisplay(Items);
+                    ThirdRoom(Items);
+                    break;
+
+               
+                case "t":
+                case "tips":
+                case "help":
+                    tips();
+                    ThirdRoom(Items);
+                    break;
+
+                default:
+                    AliceDonotUnderstand();
+                    ThirdRoom(Items);
+                    break;
+
+            }
         }
 
-        public static void FourthRoom()
+        public static void FourthRoom(Inventory[] Items)
         {
             //This is the method for the fourth room of the game
             Console.WriteLine("You reach the top of the stairs and enter another room with 4 doors");
