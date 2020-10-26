@@ -30,7 +30,7 @@ namespace GroupGame
             //call the start screen
             Start();
             //call the first room which begins the game
-            FirstRoom(Items);
+            FirstRoomOpen(Items);
             Console.ReadLine();
 
         }
@@ -129,7 +129,7 @@ namespace GroupGame
                         Console.WriteLine("The door unlocked!");
                         Console.WriteLine("");
                         Console.Clear();
-                        SecondRoom(Items);
+                        SecondRoomOpen(Items);
                     }
 
                     else
@@ -249,6 +249,13 @@ namespace GroupGame
                     SecondRoom(Items);
                     break;
 
+                case "use cake":
+                case "eat cake":
+                case "eat me": //user can eat cake in the wrong room, they do not yet lose the item from their inventory, but they must consume the potion again to continue
+                    Console.WriteLine("Wow, you begin to grow and grow!! You are much to tall to fit through that teeny tiny door now!");
+                    SecondRoom(Items);
+                    break;
+
                 case "north":
                 case "go north":
                 case "walk north":
@@ -320,20 +327,36 @@ namespace GroupGame
             }
         }
 
+        public static void ThirdRoomOpen(Inventory[] Items)
+        {
+            //seperate opening from the rest of the method to keep console clear
+            Console.WriteLine("You are in a new room. There are huge stairs in front of you! They are much too big to climb!");
+            Console.WriteLine("");
+            ThirdRoom(Items);
+        }
+
         public static void ThirdRoom(Inventory[] Items)
         {
-            Console.WriteLine("You are in a new room. There are huge stairs in front of you!");
+            Console.WriteLine("What next? Use north south east and west to navigate!");
             string response = Console.ReadLine();
             response = response.ToLower();
             switch (response)
             {
+                case "use cake":
+                case "eat cake":
+                case "eat me":
+                    Console.WriteLine("Wow, you've begun to grow so tall!"); //using the item changes the status effects
+                    big = true;
+                    small = false;
+                    break;
+
                 case "north":
                 case "go north":
                 case "walk north":
                 case "door":
 
                     // if statement to check if user has key in inventory
-                    if (Items[3].Name == "Eat me cupcake")
+                    if (big == true) //player must eat cake to climb giant stairs
                     {
                         Console.WriteLine("You ate the cake you picked up and are big enough to climb the stairs. You can leave the room!");
                         Console.WriteLine("");
@@ -382,6 +405,10 @@ namespace GroupGame
                 case "help":
                     Tips(Items);
                     ThirdRoom(Items);
+                    break;
+
+                case "look":
+                    ThirdRoomOpen(Items); //lets user get a description of the room again
                     break;
 
                 default:
