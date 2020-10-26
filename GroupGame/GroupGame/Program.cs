@@ -16,6 +16,9 @@ namespace GroupGame
             public string Name;
             public string Desc;
         }
+
+        public static bool big;
+        public static bool small;
         static void Main()
         {
             bool Big, Small;
@@ -218,13 +221,25 @@ namespace GroupGame
                     SecondRoom(Items); // insert key item into items array then call the beginning of the room back
                     break;
 
+                case "use drink me":
+                case "drink":
+                case "drink water":
+                case "drink bottle":
+                case "use water":
+                case "use bottle":
+                    Console.WriteLine("You begin to shrink!!");
+                    small = true;
+                    big = false;
+                    SecondRoom(Items);
+                    break;
+
                 case "north":
                 case "go north":
                 case "walk north":
                 case "tiny door":
                     // if statement to check if user used the Drink me bottle
                     Console.WriteLine("There is a small door.");
-                    if (Items[1].Name == "key") // need to be fix
+                    if (small == true) // need to be fix
                     {
                         Console.WriteLine("You are smaller enough. Now you can easily pass this door.");
                         Console.WriteLine("");
