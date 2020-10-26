@@ -32,7 +32,7 @@ namespace GroupGame
             //call the first room which begins the game
             FirstRoom(Items);
             Console.ReadLine();
-            
+
         }
 
         public static void Start()
@@ -53,7 +53,7 @@ namespace GroupGame
         \/  \/ \___/|_| |_|\__,_|\___|_|  |_|\__,_|_| |_|\__,_| /_/    \_\__,_| \_/ \___|_| |_|\__|\__,_|_|  \___|
                                                                                                                
                                                                                                                
-            ");     
+            ");
             Console.WriteLine("");
             Console.WriteLine("A game by Alice Dowle, Saniya Vahora, Harry Wallace and Pan Zhi");
             Console.ReadLine();
@@ -88,13 +88,19 @@ namespace GroupGame
 
         }
 
+        public static void FirstRoomOpen(Inventory[] Items)
+        {
+            // This method outputs the description of the room. Making this seperate keeps the console clear everytime the player performs an action.
+            Console.WriteLine("You are in a room! There is a locked door in front of you. You can see a key inside the room.");
+            Console.WriteLine("");
+            FirstRoom(Items);
+        }
+
         public static void FirstRoom(Inventory[] Items)
         {
             //This is the method for the first location of the game
 
             //Beginning the game with simple input
-            Console.WriteLine("You are in a room! There is a locked door in front of you. You can see a key inside the room.");
-            Console.WriteLine("");
             Console.WriteLine("What now? Use north south east and west to navigate! Type help to get tips!");
             Console.WriteLine("");
             string response = Console.ReadLine();
@@ -169,7 +175,10 @@ namespace GroupGame
                     Tips(Items);
                     FirstRoom(Items);
                     break;
-                    // in case the user inputs something the program cannot understand
+                // in case the user inputs something the program cannot understand
+                case "look":
+                        FirstRoomOpen(Items); //lets user get a description of the room again in case they are lost
+                    break;
                 default:
                     AliceDonotUnderstand();
                     FirstRoom(Items);
