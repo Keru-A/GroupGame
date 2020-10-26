@@ -92,6 +92,7 @@ namespace GroupGame
         {
             // This method outputs the description of the room. Making this seperate keeps the console clear everytime the player performs an action.
             Console.WriteLine("You are in a room! There is a locked door in front of you. You can see a key inside the room.");
+            Thread.Sleep(600);
             Console.WriteLine("");
             FirstRoom(Items);
         }
@@ -224,6 +225,7 @@ namespace GroupGame
                     Items[2].Desc = "It seems dosen't like normal water.";
                     Console.WriteLine("You picked up a Drink me bottle!");
                     Console.WriteLine("");
+                    Thread.Sleep(600);
                     SecondRoom(Items); // insert key item into items array then call the beginning of the room back
                     break;
 
@@ -240,6 +242,7 @@ namespace GroupGame
                     Items[3].Desc = "It seems dosen't like normal cupcake.";
                     Console.WriteLine("You picked up a Eat me cupcake!");
                     Console.WriteLine("");
+                    Thread.Sleep(600);
                     SecondRoom(Items); // insert key item into items array then call the beginning of the room back
                     break;
 
@@ -249,17 +252,39 @@ namespace GroupGame
                 case "drink bottle":
                 case "use water":
                 case "use bottle":
-                    Console.WriteLine("You begin to shrink!!");
-                    small = true; //player must use their item to change the status effect. They do not yet lose the item from their inventory.
-                    big = false;
-                    SecondRoom(Items);
+                    if (Items[2].Name == "Drink me bottle") //player must have item in inventory to use it
+                    {
+                        Console.WriteLine("You begin to shrink!!");
+                        small = true; //player must use their item to change the status effect. They do not yet lose the item from their inventory.
+                        big = false;
+                        Console.WriteLine("");
+                        Thread.Sleep(600);
+                        SecondRoom(Items);
+                    }
+
+                    else
+                    {
+                        AliceDonotUnderstand();
+                        SecondRoom(Items);
+                    }
                     break;
 
                 case "use cake":
                 case "eat cake":
                 case "eat me": //user can eat cake in the wrong room, they do not yet lose the item from their inventory, but they must consume the potion again to continue
-                    Console.WriteLine("Wow, you begin to grow and grow!! You are much to tall to fit through that teeny tiny door now!");
-                    SecondRoom(Items);
+                    if (Items[3].Name == "Eat me cupcake")
+                    {
+                        Console.WriteLine("Wow, you begin to grow and grow!! You are much to tall to fit through that teeny tiny door now!");
+                        Console.WriteLine("");
+                        Thread.Sleep(600);
+                        SecondRoom(Items);
+                    }
+
+                    else
+                    {
+                        AliceDonotUnderstand();
+                        SecondRoom(Items);
+                    }
                     break;
 
                 case "north":
@@ -272,12 +297,14 @@ namespace GroupGame
                     {
                         Console.WriteLine("You are smaller enough. Now you can easily pass this door.");
                         Console.WriteLine("");
-                        ThirdRoom(Items);
+                        Thread.Sleep(600);
+                        ThirdRoomOpen(Items);
                     }
                     else
                     {
                         Console.WriteLine("The door is too small for you. You can only put your finger in.");
                         Console.WriteLine("");
+                        Thread.Sleep(600);
                         SecondRoom(Items);
                     }
                     break;
@@ -288,6 +315,7 @@ namespace GroupGame
                 case "walk east":
                     Console.WriteLine("There is nowhere to go in that direction");
                     Console.WriteLine("");
+                    Thread.Sleep(600);
                     SecondRoom(Items);
                     break;
 
@@ -297,6 +325,7 @@ namespace GroupGame
                 case "walk west":
                     Console.WriteLine("There is nowhere to go in that direction");
                     Console.WriteLine("");
+                    Thread.Sleep(600);
                     SecondRoom(Items);
                     break;
                 case "south":
@@ -304,6 +333,7 @@ namespace GroupGame
                 case "walk south":
                     Console.WriteLine("You ");
                     Console.WriteLine("");
+                    Thread.Sleep(600);
                     SecondRoom(Items);
                     break;
 
@@ -351,9 +381,21 @@ namespace GroupGame
                 case "use cake":
                 case "eat cake":
                 case "eat me":
-                    Console.WriteLine("Wow, you've begun to grow so tall!"); //using the item changes the status effects
-                    big = true;
-                    small = false;
+                    if (Items[3].Name == "Eat me cupcake")
+                    {
+                        Console.WriteLine("Wow, you've begun to grow so tall!"); //using the item changes the status effects
+                        Console.WriteLine("");
+                        Thread.Sleep(600);
+                        big = true;
+                        small = false;
+                        ThirdRoom(Items);
+                    }
+
+                    else
+                    {
+                        AliceDonotUnderstand();
+                        ThirdRoom(Items);
+                    }
                     break;
 
                 case "north":
