@@ -117,6 +117,7 @@ namespace GroupGame
                     Items[1].Desc = "An old fashioned key. I wonder what it unlocks?";
                     Console.WriteLine("You picked up the key!");
                     Console.WriteLine("");
+                    Thread.Sleep(600);
                     FirstRoom(Items); // insert key item into items array then call the beginning of the room back
                     break;
                 case "north":
@@ -128,6 +129,7 @@ namespace GroupGame
                     {
                         Console.WriteLine("The door unlocked!");
                         Console.WriteLine("");
+                        Thread.Sleep(600);
                         Console.Clear();
                         SecondRoomOpen(Items);
                     }
@@ -136,6 +138,7 @@ namespace GroupGame
                     {
                         Console.WriteLine("The door is locked. Maybe there is a key");
                         Console.WriteLine("");
+                        Thread.Sleep(600);
                         FirstRoom(Items);
                     }
                     break;
@@ -145,6 +148,7 @@ namespace GroupGame
                 case "walk east":
                     Console.WriteLine("There is nowhere to go in that direction");
                     Console.WriteLine("");
+                    Thread.Sleep(600);
                     FirstRoom(Items);
                     break;
                 case "west":
@@ -152,6 +156,7 @@ namespace GroupGame
                 case "walk west":
                     Console.WriteLine("There is nowhere to go in that direction");
                     Console.WriteLine("");
+                    Thread.Sleep(600);
                     FirstRoom(Items);
                     break;
                 case "south":
@@ -159,6 +164,7 @@ namespace GroupGame
                 case "walk south":
                     Console.WriteLine("There is nowhere to go in that direction");
                     Console.WriteLine("");
+                    Thread.Sleep(600);
                     FirstRoom(Items);
                     break;
                     // option for the user to check their inventory by calling inventory display method
