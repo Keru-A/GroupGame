@@ -17,6 +17,8 @@ namespace GroupGame
             public string Desc;
         }
 
+
+        //big small boolean status effect, global variables to ensure they can function in every method
         public static bool big;
         public static bool small;
         static void Main()
@@ -228,7 +230,7 @@ namespace GroupGame
                 case "use water":
                 case "use bottle":
                     Console.WriteLine("You begin to shrink!!");
-                    small = true;
+                    small = true; //player must use their item to change the status effect. They do not yet lose the item from their inventory.
                     big = false;
                     SecondRoom(Items);
                     break;
@@ -239,7 +241,7 @@ namespace GroupGame
                 case "tiny door":
                     // if statement to check if user used the Drink me bottle
                     Console.WriteLine("There is a small door.");
-                    if (small == true) // need to be fix
+                    if (small == true) // need to be fix. (I tested the bool here - Alice)
                     {
                         Console.WriteLine("You are smaller enough. Now you can easily pass this door.");
                         Console.WriteLine("");
