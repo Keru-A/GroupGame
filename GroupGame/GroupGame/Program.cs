@@ -448,7 +448,9 @@ namespace GroupGame
             // when user needs help with what they want to enter, use this method
             Console.WriteLine("Enter north(n), south(s), west(w), east(e) to let Alice moving into different place.");
             Console.WriteLine("Use 'i' to check your inventory!");
+            Console.WriteLine("Try to use look to get a feel for your surroundings again");
             Console.WriteLine("To get some items, type 'get' + the name of the item you want to get.");
+            Console.WriteLine("Try using some of the items you have in your inventory!");
             Console.ReadLine();
         }
 
