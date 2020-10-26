@@ -188,11 +188,16 @@ namespace GroupGame
 
         }
 
-        public static void SecondRoom(Inventory[] Items)
+        public static void SecondRoomOpen(Inventory[] Items)
         {
-            //This is the method for the second room of the game
+            //opening for second room to keep console clear during game
             Console.WriteLine("You are in a new room."); // Pan: the description of new room needed in here!
             Console.WriteLine("You see a bottle of water with notes which says 'Drink me', and a box of cupcakes with notes which says 'Eat me'.");
+            SecondRoom(Items);
+        }
+
+        public static void SecondRoom(Inventory[] Items)
+        {
             Console.WriteLine("What next? Use north south east and west to navigate!");
             string response = Console.ReadLine();
             response = response.ToLower(); // convert input to lowercase for error control
@@ -305,7 +310,9 @@ namespace GroupGame
                     Tips(Items);
                     SecondRoom(Items);
                     break;
-
+                case "look":
+                    SecondRoomOpen(Items); //let user get description of the room again if they are lost
+                    break;
                 default:
                     AliceDonotUnderstand();
                     SecondRoom(Items);
@@ -359,7 +366,7 @@ namespace GroupGame
                 case "go south":
                 case "walk south":
                     Console.WriteLine("");
-                    SecondRoom(Items);
+                    SecondRoomOpen(Items); //call the full second room methods to help user stay orientated
                     break;
 
                 case "i":
