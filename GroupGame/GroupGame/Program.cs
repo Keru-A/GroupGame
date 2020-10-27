@@ -201,7 +201,7 @@ namespace GroupGame
         {
             //opening for second room to keep console clear during game
             Console.WriteLine("You are in a new room."); // Pan: the description of new room needed in here!
-            Console.WriteLine("You see a bottle of water with notes which says 'Drink me', and a box of cupcakes with notes which says 'Eat me'.");
+            Console.WriteLine("You see a bottle of water with a note which says 'Drink me', and a box of cupcakes with a note which says 'Eat me'.");
             SecondRoom(Items);
         }
 
@@ -369,7 +369,7 @@ namespace GroupGame
         public static void ThirdRoomOpen(Inventory[] Items)
         {
             //seperate opening from the rest of the method to keep console clear
-            Console.WriteLine("You are in a new room. There are huge stairs in front of you! They are much too big to climb!");
+            Console.WriteLine("You are in third room. There are huge stairs in front of you! They are much too big to climb!");
             Console.WriteLine("");
             ThirdRoom(Items);
         }
@@ -429,9 +429,9 @@ namespace GroupGame
                     Console.WriteLine("");
                     ThirdRoom(Items);
                     break;
-                case "west":
-                case "go west":
-                case "walk west":
+                case "north":
+                case "go north":
+                case "walk north":
                     Console.WriteLine("There is nowhere to go in that direction");
                     Console.WriteLine("");
                     ThirdRoom(Items);
@@ -574,6 +574,11 @@ namespace GroupGame
             Console.Write($"- {Items[5].Name} -".PadRight(20));
             Console.WriteLine($"- {Items[5].Desc} -".PadRight(20));
             Console.ReadLine();
+        }
+
+        public static void threeDoor(Inventory[]Item)
+        {
+
         }
     }
 }
