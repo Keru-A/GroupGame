@@ -401,9 +401,9 @@ namespace GroupGame
                     }
                     break;
 
-                case "north":
-                case "go north":
-                case "walk north":
+                case "west":
+                case "go west":
+                case "walk west":
                 case "door":
 
                     // if statement to check if user has key in inventory
