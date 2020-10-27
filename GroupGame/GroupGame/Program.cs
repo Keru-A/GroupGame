@@ -91,7 +91,7 @@ namespace GroupGame
             Console.WriteLine("What now? Use north south east and west to navigate! Type help to get tips!");
             string response = Console.ReadLine();
             response = response.ToLower(); // convert input to lowercase for error control
-
+            
 
             //switch to interpert user input
             switch (response)
