@@ -84,6 +84,7 @@ namespace GroupGame
 
         public static void FirstRoom(Inventory[] Items)
         {
+            
             //This is the method for the first location of the game
 
             //Beginning the game with simple input
@@ -167,11 +168,13 @@ namespace GroupGame
                     break;
 
             }
+            
 
         }
 
         public static void SecondRoom(Inventory[] Items)
         {
+            
             //This is the method for the second room of the game
             Console.WriteLine("You are in a new room."); // Pan: the description of new room needed in here!
             Console.WriteLine("You see a bottle of water with notes which says 'Drink me', and a box of cupcakes with notes which says 'Eat me'.");
@@ -281,6 +284,7 @@ namespace GroupGame
                     SecondRoom(Items);
                     break;
             }
+
         }
 
         public static void ThirdRoom(Inventory[] Items)
