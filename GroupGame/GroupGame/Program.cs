@@ -477,23 +477,37 @@ namespace GroupGame
             Console.ReadLine();
             Console.WriteLine("There are 3 doors grouped together along the east wall and the other door resides on the south wall by itself");
             Console.ReadLine();
-            Console.WriteLine("Will you go east or south?");
-            string rm4Answer = Console.ReadLine();
-
-         
+            Console.WriteLine("Which way will you go?");
+            string response = Console.ReadLine();
+            response = response.ToLower();
+            switch (response)
             {
-                if (rm4Answer == "east")
-                {
-                    Console.WriteLine("You approach the three mysterious looking doors...");
-                    Console.ReadLine();
-                }
-                else if (rm4Answer == "south")
-                {
-                    Console.WriteLine("You approach the single door");
-                    Console.ReadLine();
-                }
-              
-            } 
+
+                case "north":
+                case "go north":
+                case "walk north":
+                case "door":
+                    Console.WriteLine("You walk north and find a door being guarded by Tweedledee and Tweedledum, they have a riddle for you...");
+                    Console.WriteLine("You must answer correctly in order to pass through the door.");
+                    Console.WriteLine("");
+                    break;
+                case "west":
+                case "go west":
+                case "walk west":
+                    Console.WriteLine("There is nowhere to go in that direction");
+                    Console.WriteLine("");
+                    break;
+                case "south":
+                case "go south":
+                case "walk south":
+                    Console.WriteLine("You chose south, thus you wen't back the way you came");
+                    Console.WriteLine("");
+                    break;
+                case "east":
+                case "go east":
+                case "walk east":
+                    break;
+            }
         }
 
         public static void GameOver(Inventory[] Items)
