@@ -27,14 +27,12 @@ namespace GroupGame
             Inventory[] Items = new Inventory[6];
             // items designated slots - key 1, drink me bottle 2, eat me cake 3, 
             //call the start screen
-            Start();
-            //call the first room which begins the game
-            FirstRoomOpen(Items);
+            Start(Items);
             Console.ReadLine();
 
         }
 
-        public static void Start()
+        public static void Start(Inventory[] Items)
         {
             //This is the method for the start screen
             Console.WriteLine("");
@@ -55,10 +53,34 @@ namespace GroupGame
             ");
             Console.WriteLine("");
             Console.WriteLine("A game by Alice Dowle, Saniya Vahora, Harry Wallace and Pan Zhi");
-            Console.ReadLine();
-            Console.Clear();
+            Console.WriteLine("");
+            Console.WriteLine("Please select an option\n" +
+                "1 Start Game\n" +
+                "2 Exit Game\n");
+            string response = Console.ReadLine();
 
-            //intro sequence to flow into the first room
+            switch (response)
+            {
+                case "1":
+                    Console.Clear();
+                    Opening(Items);
+                    break;
+                case "2":
+                    Console.Clear();
+                    Console.WriteLine("Thanks for playing!");
+                    break;
+                default:
+                    Console.WriteLine("Input not recognised");
+                    Console.ReadLine();
+                    Console.Clear();
+                    Start(Items);
+                    break;
+            }
+
+        }
+
+        public static void Opening(Inventory[] Items)
+        {
             Console.Write("You're falling");
             Thread.Sleep(500);
             Console.Write(".");
@@ -84,7 +106,7 @@ namespace GroupGame
                 "feel your feet touch the floor.");
             Console.ReadLine();
             Console.Clear();
-
+            FirstRoomOpen(Items);
         }
 
         public static void FirstRoomOpen(Inventory[] Items)
@@ -612,7 +634,7 @@ namespace GroupGame
             if (response == "Y")
             {
                 Console.Clear();
-                Start();
+                Start(Items);
                 FirstRoom(Items);
             }
 
