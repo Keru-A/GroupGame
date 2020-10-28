@@ -51,6 +51,7 @@ namespace GroupGame
                                                                                                                
                                                                                                                
             ");
+            // Menu to start and exit the game
             Console.WriteLine("");
             Console.WriteLine("A game by Alice Dowle, Saniya Vahora, Harry Wallace and Pan Zhi");
             Console.WriteLine("");
@@ -81,6 +82,7 @@ namespace GroupGame
 
         public static void Opening(Inventory[] Items)
         {
+            //opening 'cutscene' then calls first room
             Console.Write("You're falling");
             Thread.Sleep(500);
             Console.Write(".");
