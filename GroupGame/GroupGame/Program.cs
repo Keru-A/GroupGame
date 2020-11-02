@@ -670,7 +670,6 @@ namespace GroupGame
             Console.WriteLine("Try to use 'look' to get a feel for your surroundings again");
             Console.WriteLine("To get some items, type 'get' + the name of the item you want to get.");
             Console.WriteLine("Try using some of the items you have in your inventory!");
-            Console.ReadLine();
         }
 
         public static void AliceDonotUnderstand()
@@ -696,7 +695,6 @@ namespace GroupGame
                     Console.WriteLine("'I cannot understand what it is.' Alice said.");
                     break;
             }
-            Console.ReadLine();
         }
 
         public static void InventoryDisplay(Inventory[] Items)
@@ -714,7 +712,6 @@ namespace GroupGame
             Console.WriteLine($"- {Items[4].Desc} -".PadRight(20));
             Console.Write($"- {Items[5].Name} -".PadRight(20));
             Console.WriteLine($"- {Items[5].Desc} -".PadRight(20));
-            Console.ReadLine();
         }
 
         public static void threeDoor(Inventory[]Item)
