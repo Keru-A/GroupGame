@@ -555,6 +555,8 @@ namespace GroupGame
                 case "east":
                 case "go east":
                 case "walk east":
+                    Console.WriteLine("You see three open doors in front of you. Select which door you want to go in.");
+                    ThreeDoorOpen(Items);
                     break;
             }
         }
@@ -636,6 +638,47 @@ namespace GroupGame
                     break;
             }
         }
+        public static void ThreeDoorOpen(Inventory[] Items)
+        {
+            Console.WriteLine("What now? Use north south east and west to navigate! Type help to get tips!");
+            Console.WriteLine("");
+            string response = Console.ReadLine();
+            response = response.ToLower();
+            switch (response)
+            {
+                case "Door1":
+                    Door1(Items);
+                    break;
+                case "Door2":
+                    Door2(Items);
+                    break;
+                case "Door3":
+                    Door3(Items);
+                    break;
+            }
+        }
+
+
+        public static void Door1(Inventory[] Items)
+        {
+            Console.WriteLine("");
+        }
+        public static void Door2(Inventory[] Items)
+        {
+            Console.WriteLine("You are in a closet");
+            Console.WriteLine("What now? Use north south east and west to navigate! Type help to get tips!");
+            string response = Console.ReadLine();
+            response = response.ToLower();
+            if(response=="look")
+            {
+                Console.WriteLine("The closet is empty. May be check out other doors");
+            }
+
+        }
+        public static void Door3(Inventory[] Items)
+        {
+
+        }
 
         public static void GameOver(Inventory[] Items)
         {
@@ -659,6 +702,10 @@ namespace GroupGame
             {
                 Console.WriteLine("Thanks for playing!");
                 Console.ReadLine();
+                Console.WriteLine("");
+                
+
+
             }
         }
 
@@ -717,9 +764,6 @@ namespace GroupGame
             Console.ReadLine();
         }
 
-        public static void threeDoor(Inventory[]Item)
-        {
-
-        }
+        
     }
 }
