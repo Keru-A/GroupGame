@@ -5,7 +5,6 @@ using System.Dynamic;
 using System.Globalization;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
-using System.Windows.Markup;
 
 namespace GroupGame
 {
@@ -341,7 +340,7 @@ namespace GroupGame
                     Console.WriteLine("There is a small door.");
                     if (small == true)
                     {
-                        Console.WriteLine("You are small enough. You walk through the window.");
+                        Console.WriteLine("You are smaller enough. Now you can easily pass this door.");
                         Console.WriteLine("");
                         Thread.Sleep(600);
                         ThirdRoomOpen(Items);
@@ -556,7 +555,7 @@ namespace GroupGame
                 case "east":
                 case "go east":
                 case "walk east":
-                    Console.WriteLine("You see three open doors in front of you. Select which door you want to go in.");
+                   
                     ThreeDoorOpen(Items);
                     break;
             }
@@ -648,20 +647,16 @@ namespace GroupGame
             switch (response)
             {
                 case "door1":
+                case "door 1":
                     Door1(Items);
                     break;
                 case "door2":
-                    Console.WriteLine("It is an empty broom closet");
-                    Console.ReadLine();
-                    ThreeDoorOpen(Items);
+                case "door 2":
+                    Door2(Items);
                     break;
                 case "door3":
+                case "door 3":
                     Door3(Items);
-                    break;
-                case "west":
-                    Console.WriteLine("You turn around and go back");
-                    Console.ReadLine();
-                    ThirdRoom(Items);
                     break;
             }
         }
@@ -669,10 +664,7 @@ namespace GroupGame
 
         public static void Door1(Inventory[] Items)
         {
-            Console.WriteLine("The white rabbit is there. He tells you a tip for dealing with Tweedle Dee and Tweedle Dum");
             Console.WriteLine("");
-            Console.ReadLine();
-            ThirdRoomOpen(Items);
         }
         public static void Door2(Inventory[] Items)
         {
@@ -688,8 +680,7 @@ namespace GroupGame
         }
         public static void Door3(Inventory[] Items)
         {
-            Console.WriteLine("Uh oh, you died!");
-            GameOver(Items);
+
         }
 
         public static void GameOver(Inventory[] Items)
