@@ -24,8 +24,11 @@ namespace GroupGame
         public static bool small;
         static void Main()
         {
+            
+            bool Big, Small;
             //Inventory array called Items. Remember to reference in method to be able to use the inventory.
             Inventory[] Items = new Inventory[6];
+            Riddle(Items);
             // items designated slots - key 1, drink me bottle 2, eat me cake 3, 
             //call the start screen
             Start(Items);
@@ -537,9 +540,6 @@ namespace GroupGame
                 case "go north":
                 case "walk north":
                 case "door":
-                    Console.WriteLine("You walk north and find a door being guarded by Tweedledee and Tweedledum, they have a riddle for you...");
-                    Console.WriteLine("You must answer correctly in order to pass through the door.");
-                    Console.WriteLine("");
                     break;
                 case "west":
                 case "go west":
@@ -560,6 +560,46 @@ namespace GroupGame
                     ThreeDoorOpen(Items);
                     break;
             }
+        }
+
+        public static void Riddle(Inventory[] Items)
+        {
+            bool riddle = false;
+            Console.WriteLine("You walk north and find a door being guarded by Tweedledee and Tweedledum, they have a riddle for you...");
+            Console.WriteLine("You must answer correctly in order to pass through the door.");
+            Console.WriteLine("");
+            Console.WriteLine("Here is the riddle...");
+            Console.WriteLine("");
+            Console.WriteLine("insert riddle here");
+            Console.WriteLine("");
+
+
+            do
+            {
+                Console.WriteLine("Enter your answer: ");
+                string response = Console.ReadLine();
+                int count = 0;
+                if (response == "Time" || response == "time")
+                {
+                    Console.WriteLine("Correct! You have successfully answered the riddle and may now pass through TweedleDee and TweedleDum's door");
+                    Console.WriteLine("");
+                    riddle = true;
+                }
+                else
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        Console.WriteLine("That is not the correct answer, try again");
+                        Console.WriteLine("");
+                        count++;
+                    }
+
+                    GameOver(Items);
+                }
+
+            }
+            while (riddle == false);
+                
         }
 
         public static void FifthRoomOpen(Inventory[] Items)
