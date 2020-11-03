@@ -99,7 +99,6 @@ namespace GroupGame
 
         public static void FirstRoom(Inventory[] Items)
         {
-            
             //This is the method for the first location of the game
 
             //Beginning the game with simple input
@@ -193,7 +192,6 @@ namespace GroupGame
                     break;
 
             }
-            
 
         }
 
@@ -373,7 +371,6 @@ namespace GroupGame
                     SecondRoom(Items);
                     break;
             }
-
         }
 
         public static void ThirdRoomOpen(Inventory[] Items)
