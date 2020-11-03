@@ -570,11 +570,11 @@ namespace GroupGame
             Console.WriteLine("");
             Console.WriteLine("Here is the riddle...");
             Console.WriteLine("");
-            Console.WriteLine("insert riddle here");
+            Console.WriteLine("This thing all things devours:\n Birds, beasts, trees, flowers;\n Gnaws iron, bites steel;\n Grinds hard stones to meal;\n Slays King, ruins town,\n And beats high mountain down.");
             Console.WriteLine("");
 
 
-            do
+            while (riddle == false)
             {
                 Console.WriteLine("Enter your answer: ");
                 string response = Console.ReadLine();
@@ -587,18 +587,18 @@ namespace GroupGame
                 }
                 else
                 {
-                    for (int i = 0; i < 5; i++)
-                    {
-                        Console.WriteLine("That is not the correct answer, try again");
-                        Console.WriteLine("");
-                        count++;
-                    }
+                    
+                    Console.WriteLine("That is not the correct answer, try again");
+                    Console.WriteLine("");
+                    count++;
+                    
 
                     GameOver(Items);
                 }
+                
 
             }
-            while (riddle == false);
+            
                 
         }
 
