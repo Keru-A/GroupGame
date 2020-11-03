@@ -5,6 +5,7 @@ using System.Dynamic;
 using System.Globalization;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
+using System.Windows.Markup;
 
 namespace GroupGame
 {
@@ -340,7 +341,7 @@ namespace GroupGame
                     Console.WriteLine("There is a small door.");
                     if (small == true)
                     {
-                        Console.WriteLine("You are smaller enough. Now you can easily pass this door.");
+                        Console.WriteLine("You are small enough. You walk through the window.");
                         Console.WriteLine("");
                         Thread.Sleep(600);
                         ThirdRoomOpen(Items);
@@ -646,14 +647,21 @@ namespace GroupGame
             response = response.ToLower();
             switch (response)
             {
-                case "Door1":
+                case "door1":
                     Door1(Items);
                     break;
-                case "Door2":
-                    Door2(Items);
+                case "door2":
+                    Console.WriteLine("It is an empty broom closet");
+                    Console.ReadLine();
+                    ThreeDoorOpen(Items);
                     break;
-                case "Door3":
+                case "door3":
                     Door3(Items);
+                    break;
+                case "west":
+                    Console.WriteLine("You turn around and go back");
+                    Console.ReadLine();
+                    ThirdRoom(Items);
                     break;
             }
         }
@@ -661,7 +669,10 @@ namespace GroupGame
 
         public static void Door1(Inventory[] Items)
         {
+            Console.WriteLine("The white rabbit is there. He tells you a tip for dealing with Tweedle Dee and Tweedle Dum");
             Console.WriteLine("");
+            Console.ReadLine();
+            ThirdRoomOpen(Items);
         }
         public static void Door2(Inventory[] Items)
         {
@@ -677,7 +688,8 @@ namespace GroupGame
         }
         public static void Door3(Inventory[] Items)
         {
-
+            Console.WriteLine("Uh oh, you died!");
+            GameOver(Items);
         }
 
         public static void GameOver(Inventory[] Items)
