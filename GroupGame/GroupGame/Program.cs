@@ -674,18 +674,6 @@ namespace GroupGame
             Console.ReadLine();
             ThirdRoomOpen(Items);
         }
-        public static void Door2(Inventory[] Items)
-        {
-            Console.WriteLine("You are in a closet");
-            Console.WriteLine("What now? Use north south east and west to navigate! Type help to get tips!");
-            string response = Console.ReadLine();
-            response = response.ToLower();
-            if(response=="look")
-            {
-                Console.WriteLine("The closet is empty. May be check out other doors");
-            }
-
-        }
         public static void Door3(Inventory[] Items)
         {
             Console.WriteLine("Uh oh, you died!");
@@ -714,10 +702,7 @@ namespace GroupGame
             {
                 Console.WriteLine("Thanks for playing!");
                 Console.ReadLine();
-                Console.WriteLine("");
-                
-
-
+                Environment.Exit(0);
             }
         }
 
