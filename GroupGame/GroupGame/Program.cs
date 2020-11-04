@@ -26,7 +26,6 @@ namespace GroupGame
         {
             //Inventory array called Items. Remember to reference in method to be able to use the inventory.
             Inventory[] Items = new Inventory[6];
-            FourthRoom(Items);
             // items designated slots - key 1, drink me bottle 2, eat me cake 3, 
             //call the start screen
             Start(Items);
