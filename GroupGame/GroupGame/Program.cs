@@ -580,34 +580,21 @@ namespace GroupGame
                 {
                     Console.WriteLine("That is not the correct answer, try again");
                     Console.WriteLine("");
-                    riddle = true;
-                }
-                else
-                {
-
-                    Console.WriteLine("That is not the correct answer, try again");
-                    Console.WriteLine("");
                     count++;
-
-
-                    GameOver(Items);
                 }
-
-
-                if (count >= 5)
-                {
-                    GameOver(Items);
-                }
-                else
-                {
-                    Console.WriteLine("Correct! You have successfully answered the riddle and may now pass through TweedleDee and TweedleDum's door");
-                    Console.WriteLine("");
-                }
-
-
             }
+            while (response != "time" && count < 5);
 
+            if (count >= 5)
+            {
+                GameOver(Items);
             }
+            else
+            {
+                Console.WriteLine("Correct! You have successfully answered the riddle and may now pass through TweedleDee and TweedleDum's door");
+                Console.WriteLine("");
+            }
+        }
 
         public static void FifthRoomOpen(Inventory[] Items)
         {
