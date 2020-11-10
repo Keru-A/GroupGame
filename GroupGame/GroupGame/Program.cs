@@ -241,6 +241,7 @@ namespace GroupGame
         public static void SecondRoom(Inventory[] Items)
         {
             Console.WriteLine("What will Alice do now? Type help to get tips!");
+            Console.WriteLine("");
             string response = Console.ReadLine();
             response = response.ToLower(); // convert input to lowercase for error control
 
@@ -422,6 +423,7 @@ namespace GroupGame
         public static void ThirdRoom(Inventory[] Items)
         {
             Console.WriteLine("What next? Use north south east and west to navigate!");
+            Console.WriteLine("");
             string response = Console.ReadLine();
             response = response.ToLower();
             switch (response)
@@ -525,6 +527,7 @@ namespace GroupGame
             Console.WriteLine("There other 3 doors are grouped together along the east wall");
             Thread.Sleep(600);
             Console.WriteLine("Which way will you go?");
+            Console.WriteLine("");
             string response = Console.ReadLine();
             response = response.ToLower();
             switch (response)
