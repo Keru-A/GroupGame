@@ -144,9 +144,16 @@ namespace GroupGame
                 case "get key":
                 case "key":
                 case "pick up key":
-                    Items[1].Name = "key";
-                    Items[1].Desc = "An old fashioned key. I wonder what it unlocks?";
-                    Console.WriteLine("You walk over to the table and pick up the key. It is rather old fashioned looking. It matches the ancient door");
+                    if (Items[1].Name == null && Items[1].Desc == null)     // statement for removing item after player gets it
+                    {
+                        Items[1].Name = "key";
+                        Items[1].Desc = "An old fashioned key. I wonder what it unlocks?";
+                        Console.WriteLine("You walk over to the table and pick up the key. It is rather old fashioned looking. It matches the ancient door");
+                    }
+                    else
+                    {
+                        Console.WriteLine("You have already get the key in your bag. Type 'i' to check your items.");
+                    }
                     Console.WriteLine("");
                     Thread.Sleep(600);
                     FirstRoom(Items); // insert key item into items array then call the beginning of the room back
@@ -257,10 +264,17 @@ namespace GroupGame
                 case "pick up potion":
                 case "bottle":
                 case "potion":
-                    Items[2].Name = "Drink me bottle";
-                    Items[2].Desc = "It seems dosen't like normal water.";
-                    Console.WriteLine("You reach up as high as you can and your fingers touch the tag dangling from the bottle, just enough for you to tug it down. The little bottle has a tag on it which reads 'Drink Me'\n" +
-                        "How strange...");
+                    if (Items[2].Name == null && Items[2].Desc == null)     // statement for removing item after player gets it
+                    {
+                        Items[2].Name = "Drink me bottle";
+                        Items[2].Desc = "It seems dosen't like normal water.";
+                        Console.WriteLine("You reach up as high as you can and your fingers touch the tag dangling from the bottle, just enough for you to tug it down. The little bottle has a tag on it which reads 'Drink Me'\n" +
+                            "How strange...");
+                    }
+                    else
+                    {
+                        Console.WriteLine("There was a bottle on table, now it is in your hand. Type 'i' to check your items.");
+                    }
                     Console.WriteLine("");
                     Thread.Sleep(600);
                     SecondRoom(Items); // insert key item into items array then call the beginning of the room back
@@ -274,11 +288,18 @@ namespace GroupGame
                 case "get cake":
                 case "pickup cake":
                 case "pick up cake":
-                    Items[3].Name = "Eat me cupcake";
-                    Items[3].Desc = "It seems dosen't like normal cupcake.";
-                    Console.WriteLine("You reach up your hand as high as you can, your fingers outstretched. You're just a little too short. With a jump you manage to grasp the box in your hand and bring it down with you as you fall back down.\n" +
-                        "It's a pretty little treasure box, with decorated cakes inside. The icing reads 'Eat Me'\n" +
-                        "Very odd...");
+                    if (Items[3].Name == null && Items[3].Desc ==null)     // statement for removing item after player gets it
+                    {
+                        Items[3].Name = "Eat me cupcake";
+                        Items[3].Desc = "It seems dosen't like normal cupcake.";
+                        Console.WriteLine("You reach up your hand as high as you can, your fingers outstretched. You're just a little too short. With a jump you manage to grasp the box in your hand and bring it down with you as you fall back down.\n" +
+                            "It's a pretty little treasure box, with decorated cakes inside. The icing reads 'Eat Me'\n" +
+                            "Very odd...");
+                    }
+                    else
+                    {
+                        Console.WriteLine("There is no cakes on the table because you got the whole box of them. Type 'i' to check your items.");
+                    }
                     Console.WriteLine("");
                     Thread.Sleep(600);
                     SecondRoom(Items); // insert key item into items array then call the beginning of the room back
@@ -293,8 +314,8 @@ namespace GroupGame
                 case "drink":
                     if (Items[2].Name == "Drink me bottle") //player must have item in inventory to use it
                     {
-                        Items[2].Name = "";
-                        Items[2].Desc = "";
+                        Items[2].Name = null;
+                        Items[2].Desc = null;
                         Console.WriteLine("You begin to shrink!!");
                         Console.WriteLine("If you want to become big again, maybe you can try Eat me cupcake...?");
                         small = true; //player must use their item to change the status effect. They do not yet lose the item from their inventory.
@@ -316,8 +337,8 @@ namespace GroupGame
                 case "eat me":
                     if (Items[3].Name == "Eat me cupcake")
                     {
-                        Items[3].Name = "";
-                        Items[3].Desc = "";
+                        Items[3].Name = null;
+                        Items[3].Desc = null;
                         Console.WriteLine("Wow, you begin to grow and grow!! You are much to tall to fit through that teeny tiny door now!");
                         Console.WriteLine("If you want to become small again, maybe you can try Drink me water...?");
                         Console.WriteLine("");
