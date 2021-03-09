@@ -132,7 +132,7 @@ namespace GroupGame
             //This is the method for the first location of the game
 
             //Beginning the game with simple input
-            Console.WriteLine("What will Alice do now? Type help to get tips!");
+            Console.WriteLine("You are in the first room. What will Alice do now? Type help to get tips!");
             Console.WriteLine("");
             string response = Console.ReadLine();
             response = response.ToLower(); // convert input to lowercase for error control
@@ -240,7 +240,7 @@ namespace GroupGame
 
         public static void SecondRoom(Inventory[] Items)
         {
-            Console.WriteLine("What will Alice do now? Type help to get tips!");
+            Console.WriteLine("You are in the second room. What will Alice do now? Type help to get tips!");
             Console.WriteLine("");
             string response = Console.ReadLine();
             response = response.ToLower(); // convert input to lowercase for error control
@@ -354,18 +354,25 @@ namespace GroupGame
                     }
                     break;
 
-                // hidden room
                 case "east":
                 case "go east":
                 case "walk east":
-                    Console.WriteLine("There is a door in this direction, and lucky is not locked.");
+                    Console.WriteLine("There is a secret tiny door in this direction");
                     if (small == true)
                     {
-
+                        Console.WriteLine("You're tiny enough to squeeze through the door");
+                        Console.WriteLine("");
+                        Thread.Sleep(600);
+                        FifthRoomOpen(Items);
                     }
-                    Console.WriteLine("");
-                    Thread.Sleep(600);
-                    FifthRoomOpen(Items);
+
+                    else
+                    {
+                        Console.WriteLine("You're too big to fit through here");
+                        Console.WriteLine("");
+                        Thread.Sleep(600);
+                        SecondRoom(Items);
+                    }
                     break;
 
                 // control for if the user goes the wrong direction
@@ -380,10 +387,14 @@ namespace GroupGame
                 case "south":
                 case "go south":
                 case "walk south":
-                    Console.WriteLine("There is nowhere to go in that direction");
+                case "back":
+                case "turn around":
+                case "turn back":
+                case "go back":
+                    Console.WriteLine("You turn around and go back");
                     Console.WriteLine("");
                     Thread.Sleep(600);
-                    SecondRoom(Items);
+                    FirstRoom(Items);
                     break;
 
                 // option for the user to check their inventory by calling inventory display method
@@ -415,14 +426,14 @@ namespace GroupGame
         public static void ThirdRoomOpen(Inventory[] Items)
         {
             //seperate opening from the rest of the method to keep console clear
-            Console.WriteLine("You are in third room. There are huge stairs in on the west side of the room! They are much too big to climb!");
+            Console.WriteLine("You are in the third room. There are huge stairs in on the west side of the room! They are much too big to climb!");
             Console.WriteLine("");
             ThirdRoom(Items);
         }
 
         public static void ThirdRoom(Inventory[] Items)
         {
-            Console.WriteLine("What next? Use north south east and west to navigate!");
+            Console.WriteLine("You are in the third room. What next? Use north south east and west to navigate!");
             Console.WriteLine("");
             string response = Console.ReadLine();
             response = response.ToLower();
@@ -488,6 +499,10 @@ namespace GroupGame
                 case "south":
                 case "go south":
                 case "walk south":
+                case "back":
+                case "turn around":
+                case "turn back":
+                case "go back":
                     Console.WriteLine("You turn and go back");
                     SecondRoomOpen(Items); //call the full second room methods to help user stay orientated
                     break;
@@ -547,16 +562,20 @@ namespace GroupGame
                     Console.WriteLine("There is nowhere to go in that direction");
                     Console.WriteLine("");
                     break;
-                case "south":
-                case "go south":
-                case "walk south":
-                    Console.WriteLine("You chose south, thus you wen't back the way you came");
-                    Console.WriteLine("");
-                    ThirdRoomOpen(Items);
-                    break;
                 case "east":
                 case "go east":
                 case "walk east":
+                case "back":
+                case "turn around":
+                case "turn back":
+                case "go back":
+                    Console.WriteLine("You turn around and go back");
+                    Console.WriteLine("");
+                    ThirdRoomOpen(Items);
+                    break;
+                case "south":
+                case "go south":
+                case "walk south":
                     Console.WriteLine("");
                     Console.WriteLine("You approach the three doors.");
                     ThreeDoorOpen(Items);
@@ -643,7 +662,11 @@ namespace GroupGame
                 case "west":
                 case "go west":
                 case "walk west":
-                    Console.WriteLine("back");
+                case "back":
+                case "turn around":
+                case "turn back":
+                case "go back":
+                    Console.WriteLine("You turn around and go back");
                     Console.WriteLine("");
                     Thread.Sleep(600);
                     SecondRoomOpen(Items);
@@ -719,9 +742,14 @@ namespace GroupGame
                     break;
                 case "door3":
                 case "door 3":
+                    Console.WriteLine("");
                     Door3(Items);
                     break;
-                case "west":
+                case "south":
+                case "back":
+                case "turn around":
+                case "turn back":
+                case "go back":
                     Console.WriteLine("You turn around and go back");
                     Console.ReadLine();
                     FourthRoom(Items);
@@ -780,6 +808,7 @@ namespace GroupGame
         {
             // when user needs help with what they want to enter, use this method
             Console.WriteLine("Enter north(n), south(s), west(w), east(e) to get Alice to move about the area.");
+            Console.WriteLine("You can turn back too if you want!");
             Console.WriteLine("Use 'i' to check your inventory!");
             Console.WriteLine("Try to use 'look' to get a feel for your surroundings again");
             Console.WriteLine("To get some items, type 'get' + the name of the item you want to get.");
