@@ -120,7 +120,7 @@ namespace GroupGame
             Thread.Sleep(600);
             Console.WriteLine("'This door is impassable!' Spat the door handle impetuously.\n" +
                 "'Impossible?' You ask, 'Surely nothing is impossible.'\n" +
-                "'No... Im-PASS-able. You cannot pass it, for it is locked' came the smug response.\n"  +
+                "'No... Im-PASS-able. You cannot pass it, for it is locked' came the smug response.\n" +
                 "Disappointed you cast your eyes back around the room and notice a table that was not there before... and a key lying atop it!");
             Thread.Sleep(600);
             Console.WriteLine("");
@@ -136,7 +136,7 @@ namespace GroupGame
             Console.WriteLine("");
             string response = Console.ReadLine();
             response = response.ToLower(); // convert input to lowercase for error control
-            
+
 
             //switch to interpert user input
             switch (response)
@@ -175,7 +175,7 @@ namespace GroupGame
                         FirstRoom(Items);
                     }
                     break;
-                    // control for if the user goes the wrong direction
+                // control for if the user goes the wrong direction
                 case "east":
                 case "go east":
                 case "walk east":
@@ -200,14 +200,14 @@ namespace GroupGame
                     Thread.Sleep(600);
                     FirstRoom(Items);
                     break;
-                    // option for the user to check their inventory by calling inventory display method
+                // option for the user to check their inventory by calling inventory display method
                 case "i":
                 case "inventory":
                 case "items":
                     InventoryDisplay(Items);
                     FirstRoom(Items);
                     break;
-                    // option for user to get help if confused
+                // option for user to get help if confused
                 case "t":
                 case "tips":
                 case "help":
@@ -216,7 +216,7 @@ namespace GroupGame
                     break;
                 // in case the user inputs something the program cannot understand
                 case "look":
-                        FirstRoomOpen(Items); //lets user get a description of the room again in case they are lost
+                    FirstRoomOpen(Items); //lets user get a description of the room again in case they are lost
                     break;
                 default:
                     AliceDonotUnderstand();
@@ -403,7 +403,7 @@ namespace GroupGame
                     break;
                 //let user get description of the room again if they are lost
                 case "look":
-                    SecondRoomOpen(Items); 
+                    SecondRoomOpen(Items);
                     break;
                 default:
                     AliceDonotUnderstand();
@@ -499,7 +499,7 @@ namespace GroupGame
                     ThirdRoom(Items);
                     break;
 
-               
+
                 case "t":
                 case "tips":
                 case "help":
@@ -619,6 +619,35 @@ namespace GroupGame
             {
                 Console.WriteLine("Correct! You have successfully answered the riddle and may now pass through TweedleDee and TweedleDum's door");
                 Console.WriteLine("");
+                Console.ReadLine();
+                WinningGame(Items);
+            }
+        }
+
+
+
+        // This is the new method for winning the game //
+        public static void WinningGame(Inventory[] Items)
+        {
+            Console.WriteLine("Congratulations! You have won the game and thus emerge through TweedleDee and TweedleDum's door victorious.");
+
+            Console.WriteLine("Play again? Y/N");
+            string response = Console.ReadLine();
+            response = response.ToUpper();
+
+            //if statement to check answer
+            if (response == "Y")
+            {
+                Console.Clear();
+                Start(Items);
+                FirstRoom(Items);
+            }
+
+            else
+            {
+                Console.WriteLine("Thanks for playing!");
+                Console.ReadLine();
+                Environment.Exit(0);
             }
         }
 
