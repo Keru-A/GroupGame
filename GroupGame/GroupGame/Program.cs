@@ -391,7 +391,7 @@ namespace GroupGame
                 case "turn around":
                 case "turn back":
                 case "go back":
-                    Console.WriteLine("You turn around and go back");
+                    Console.WriteLine("You turn around and go back"); //lets the user enter the previous room
                     Console.WriteLine("");
                     Thread.Sleep(600);
                     FirstRoom(Items);
