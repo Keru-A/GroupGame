@@ -23,11 +23,8 @@ namespace GroupGame
         public static bool small;
         static void Main()
         {
-            
-            bool Big, Small;
             //Inventory array called Items. Remember to reference in method to be able to use the inventory.
             Inventory[] Items = new Inventory[6];
-            Riddle(Items);
             // items designated slots - key 1, drink me bottle 2, eat me cake 3, 
             //call the start screen
             Start(Items);
@@ -122,7 +119,7 @@ namespace GroupGame
             Thread.Sleep(600);
             Console.WriteLine("'This door is impassable!' Spat the door handle impetuously.\n" +
                 "'Impossible?' You ask, 'Surely nothing is impossible.'\n" +
-                "'No... Im-PASS-able. You cannot pass it, for it is locked' came the smug response.\n"  +
+                "'No... Im-PASS-able. You cannot pass it, for it is locked' came the smug response.\n" +
                 "Disappointed you cast your eyes back around the room and notice a table that was not there before... and a key lying atop it!");
             Thread.Sleep(600);
             Console.WriteLine("");
@@ -131,15 +128,14 @@ namespace GroupGame
 
         public static void FirstRoom(Inventory[] Items)
         {
-            
             //This is the method for the first location of the game
 
             //Beginning the game with simple input
-            Console.WriteLine("What will Alice do now? Type help to get tips!");
+            Console.WriteLine("You are in the first room. What will Alice do now? Type help to get tips!");
             Console.WriteLine("");
             string response = Console.ReadLine();
             response = response.ToLower(); // convert input to lowercase for error control
-            
+
 
             //switch to interpert user input
             switch (response)
@@ -147,9 +143,16 @@ namespace GroupGame
                 case "get key":
                 case "key":
                 case "pick up key":
-                    Items[1].Name = "key";
-                    Items[1].Desc = "An old fashioned key. I wonder what it unlocks?";
-                    Console.WriteLine("You walk over to the table and pick up the key. It is rather old fashioned looking. It matches the ancient door");
+                    if (Items[1].Name == null && Items[1].Desc == null)     // statement for removing item after player gets it
+                    {
+                        Items[1].Name = "key";
+                        Items[1].Desc = "An old fashioned key. I wonder what it unlocks?";
+                        Console.WriteLine("You walk over to the table and pick up the key. It is rather old fashioned looking. It matches the ancient door");
+                    }
+                    else
+                    {
+                        Console.WriteLine("You have already get the key in your bag. Type 'i' to check your items.");
+                    }
                     Console.WriteLine("");
                     Thread.Sleep(600);
                     FirstRoom(Items); // insert key item into items array then call the beginning of the room back
@@ -178,7 +181,7 @@ namespace GroupGame
                         FirstRoom(Items);
                     }
                     break;
-                    // control for if the user goes the wrong direction
+                // control for if the user goes the wrong direction
                 case "east":
                 case "go east":
                 case "walk east":
@@ -203,14 +206,14 @@ namespace GroupGame
                     Thread.Sleep(600);
                     FirstRoom(Items);
                     break;
-                    // option for the user to check their inventory by calling inventory display method
+                // option for the user to check their inventory by calling inventory display method
                 case "i":
                 case "inventory":
                 case "items":
                     InventoryDisplay(Items);
                     FirstRoom(Items);
                     break;
-                    // option for user to get help if confused
+                // option for user to get help if confused
                 case "t":
                 case "tips":
                 case "help":
@@ -219,7 +222,7 @@ namespace GroupGame
                     break;
                 // in case the user inputs something the program cannot understand
                 case "look":
-                        FirstRoomOpen(Items); //lets user get a description of the room again in case they are lost
+                    FirstRoomOpen(Items); //lets user get a description of the room again in case they are lost
                     break;
                 default:
                     AliceDonotUnderstand();
@@ -227,7 +230,6 @@ namespace GroupGame
                     break;
 
             }
-            
 
         }
 
@@ -244,7 +246,8 @@ namespace GroupGame
 
         public static void SecondRoom(Inventory[] Items)
         {
-            Console.WriteLine("What will Alice do now? Type help to get tips!");
+            Console.WriteLine("You are in the second room. What will Alice do now? Type help to get tips!");
+            Console.WriteLine("");
             string response = Console.ReadLine();
             response = response.ToLower(); // convert input to lowercase for error control
 
@@ -260,10 +263,17 @@ namespace GroupGame
                 case "pick up potion":
                 case "bottle":
                 case "potion":
-                    Items[2].Name = "Drink me bottle";
-                    Items[2].Desc = "It seems dosen't like normal water.";
-                    Console.WriteLine("You reach up as high as you can and your fingers touch the tag dangling from the bottle, just enough for you to tug it down. The little bottle has a tag on it which reads 'Drink Me'\n" +
-                        "How strange...");
+                    if (Items[2].Name == null && Items[2].Desc == null)     // statement for removing item after player gets it
+                    {
+                        Items[2].Name = "Drink me bottle";
+                        Items[2].Desc = "It seems dosen't like normal water.";
+                        Console.WriteLine("You reach up as high as you can and your fingers touch the tag dangling from the bottle, just enough for you to tug it down. The little bottle has a tag on it which reads 'Drink Me'\n" +
+                            "How strange...");
+                    }
+                    else
+                    {
+                        Console.WriteLine("There was a bottle on table, now it is in your hand. Type 'i' to check your items.");
+                    }
                     Console.WriteLine("");
                     Thread.Sleep(600);
                     SecondRoom(Items); // insert key item into items array then call the beginning of the room back
@@ -277,11 +287,18 @@ namespace GroupGame
                 case "get cake":
                 case "pickup cake":
                 case "pick up cake":
-                    Items[3].Name = "Eat me cupcake";
-                    Items[3].Desc = "It seems dosen't like normal cupcake.";
-                    Console.WriteLine("You reach up your hand as high as you can, your fingers outstretched. You're just a little too short. With a jump you manage to grasp the box in your hand and bring it down with you as you fall back down.\n" +
-                        "It's a pretty little treasure box, with decorated cakes inside. The icing reads 'Eat Me'\n" +
-                        "Very odd...");
+                    if (Items[3].Name == null && Items[3].Desc ==null)     // statement for removing item after player gets it
+                    {
+                        Items[3].Name = "Eat me cupcake";
+                        Items[3].Desc = "It seems dosen't like normal cupcake.";
+                        Console.WriteLine("You reach up your hand as high as you can, your fingers outstretched. You're just a little too short. With a jump you manage to grasp the box in your hand and bring it down with you as you fall back down.\n" +
+                            "It's a pretty little treasure box, with decorated cakes inside. The icing reads 'Eat Me'\n" +
+                            "Very odd...");
+                    }
+                    else
+                    {
+                        Console.WriteLine("There is no cakes on the table because you got the whole box of them. Type 'i' to check your items.");
+                    }
                     Console.WriteLine("");
                     Thread.Sleep(600);
                     SecondRoom(Items); // insert key item into items array then call the beginning of the room back
@@ -296,8 +313,8 @@ namespace GroupGame
                 case "drink":
                     if (Items[2].Name == "Drink me bottle") //player must have item in inventory to use it
                     {
-                        Items[2].Name = "";
-                        Items[2].Desc = "";
+                        Items[2].Name = null;
+                        Items[2].Desc = null;
                         Console.WriteLine("You begin to shrink!!");
                         Console.WriteLine("If you want to become big again, maybe you can try Eat me cupcake...?");
                         small = true; //player must use their item to change the status effect. They do not yet lose the item from their inventory.
@@ -319,8 +336,8 @@ namespace GroupGame
                 case "eat me":
                     if (Items[3].Name == "Eat me cupcake")
                     {
-                        Items[3].Name = "";
-                        Items[3].Desc = "";
+                        Items[3].Name = null;
+                        Items[3].Desc = null;
                         Console.WriteLine("Wow, you begin to grow and grow!! You are much to tall to fit through that teeny tiny door now!");
                         Console.WriteLine("If you want to become small again, maybe you can try Drink me water...?");
                         Console.WriteLine("");
@@ -340,7 +357,7 @@ namespace GroupGame
                 case "walk north":
                 case "tiny door":
                     // if statement to check if user used the Drink me bottle
-                    Console.WriteLine("There is a small door.");
+                    Console.WriteLine("You approach the small window");
                     if (small == true)
                     {
                         Console.WriteLine("You are smaller enough. Now you can easily pass this door.");
@@ -350,25 +367,32 @@ namespace GroupGame
                     }
                     else
                     {
-                        Console.WriteLine("The door is too small for you. You can only put your finger in.");
+                        Console.WriteLine("The window is too small for you. You can only put your finger in.");
                         Console.WriteLine("");
                         Thread.Sleep(600);
                         SecondRoom(Items);
                     }
                     break;
 
-                // hidden room
                 case "east":
                 case "go east":
                 case "walk east":
-                    Console.WriteLine("There is a door in this direction, and lucky is not locked.");
+                    Console.WriteLine("There is a secret tiny door in this direction");
                     if (small == true)
                     {
-
+                        Console.WriteLine("You're tiny enough to squeeze through the door");
+                        Console.WriteLine("");
+                        Thread.Sleep(600);
+                        FifthRoomOpen(Items);
                     }
-                    Console.WriteLine("");
-                    Thread.Sleep(600);
-                    FifthRoomOpen(Items);
+
+                    else
+                    {
+                        Console.WriteLine("You're too big to fit through here");
+                        Console.WriteLine("");
+                        Thread.Sleep(600);
+                        SecondRoom(Items);
+                    }
                     break;
 
                 // control for if the user goes the wrong direction
@@ -383,10 +407,14 @@ namespace GroupGame
                 case "south":
                 case "go south":
                 case "walk south":
-                    Console.WriteLine("You ");
+                case "back":
+                case "turn around":
+                case "turn back":
+                case "go back":
+                    Console.WriteLine("You turn around and go back"); //lets the user enter the previous room
                     Console.WriteLine("");
                     Thread.Sleep(600);
-                    SecondRoom(Items);
+                    FirstRoom(Items);
                     break;
 
                 // option for the user to check their inventory by calling inventory display method
@@ -406,27 +434,27 @@ namespace GroupGame
                     break;
                 //let user get description of the room again if they are lost
                 case "look":
-                    SecondRoomOpen(Items); 
+                    SecondRoomOpen(Items);
                     break;
                 default:
                     AliceDonotUnderstand();
                     SecondRoom(Items);
                     break;
             }
-
         }
 
         public static void ThirdRoomOpen(Inventory[] Items)
         {
             //seperate opening from the rest of the method to keep console clear
-            Console.WriteLine("You are in third room. There are huge stairs in front of you! They are much too big to climb!");
+            Console.WriteLine("You are in the third room. There are huge stairs in on the west side of the room! They are much too big to climb!");
             Console.WriteLine("");
             ThirdRoom(Items);
         }
 
         public static void ThirdRoom(Inventory[] Items)
         {
-            Console.WriteLine("What next? Use north south east and west to navigate!");
+            Console.WriteLine("You are in the third room. What next? Use north south east and west to navigate!");
+            Console.WriteLine("");
             string response = Console.ReadLine();
             response = response.ToLower();
             switch (response)
@@ -468,7 +496,7 @@ namespace GroupGame
 
                     else
                     {
-                        Console.WriteLine("You're too small!! How could you get bigger? Did you eat the cupcakes?");
+                        Console.WriteLine("You're too small!! How could you get bigger? Did you eat the cakes?");
                         Console.WriteLine("");
                         ThirdRoom(Items);
                     }
@@ -491,7 +519,11 @@ namespace GroupGame
                 case "south":
                 case "go south":
                 case "walk south":
-                    Console.WriteLine("");
+                case "back":
+                case "turn around":
+                case "turn back":
+                case "go back":
+                    Console.WriteLine("You turn and go back");
                     SecondRoomOpen(Items); //call the full second room methods to help user stay orientated
                     break;
 
@@ -502,7 +534,7 @@ namespace GroupGame
                     ThirdRoom(Items);
                     break;
 
-               
+
                 case "t":
                 case "tips":
                 case "help":
@@ -526,10 +558,11 @@ namespace GroupGame
         {
             //This is the method for the fourth room of the game
             Console.WriteLine("You reach the top of the stairs and enter another room with 4 doors");
-            Console.ReadLine();
-            Console.WriteLine("There are 3 doors grouped together along the east wall and the other door resides on the south wall by itself");
-            Console.ReadLine();
+            Console.WriteLine("Standing infront of the first door at the north end of the room are two very odd looking men");
+            Console.WriteLine("There other 3 doors are grouped together along the east wall");
+            Thread.Sleep(600);
             Console.WriteLine("Which way will you go?");
+            Console.WriteLine("");
             string response = Console.ReadLine();
             response = response.ToLower();
             switch (response)
@@ -539,6 +572,9 @@ namespace GroupGame
                 case "go north":
                 case "walk north":
                 case "door":
+                    Console.WriteLine("");
+                    Console.WriteLine("You approach the funny looking twins");
+                    Riddle(Items);
                     break;
                 case "west":
                 case "go west":
@@ -546,59 +582,112 @@ namespace GroupGame
                     Console.WriteLine("There is nowhere to go in that direction");
                     Console.WriteLine("");
                     break;
-                case "south":
-                case "go south":
-                case "walk south":
-                    Console.WriteLine("You chose south, thus you wen't back the way you came");
-                    Console.WriteLine("");
-                    break;
                 case "east":
                 case "go east":
                 case "walk east":
-                   
+                case "back":
+                case "turn around":
+                case "turn back":
+                case "go back":
+                    Console.WriteLine("You turn around and go back");
+                    Console.WriteLine("");
+                    ThirdRoomOpen(Items);
+                    break;
+                case "south":
+                case "go south":
+                case "walk south":
+                    Console.WriteLine("");
+                    Console.WriteLine("You approach the three doors.");
                     ThreeDoorOpen(Items);
+                    break;
+                case "i":
+                case "inventory":
+                case "items":
+                    InventoryDisplay(Items);
+                    FourthRoom(Items);
+                    break;
+                case "t":
+                case "tips":
+                case "help":
+                    Tips(Items);
+                    FourthRoom(Items);
+                    break;
+                case "look":
+                    FourthRoom(Items); //lets user get a description of the room again
+                    break;
+                default:
+                    AliceDonotUnderstand();
+                    FourthRoom(Items);
                     break;
             }
         }
 
         public static void Riddle(Inventory[] Items)
         {
-            bool riddle = false;
             Console.WriteLine("You walk north and find a door being guarded by Tweedledee and Tweedledum, they have a riddle for you...");
             Console.WriteLine("You must answer correctly in order to pass through the door.");
             Console.WriteLine("");
             Console.WriteLine("Here is the riddle...");
             Console.WriteLine("");
-            Console.WriteLine("insert riddle here");
+            Console.WriteLine("This thing all things devours:\n Birds, beasts, trees, flowers;\n Gnaws iron, bites steel;\n Grinds hard stones to meal;\n Slays King, ruins town,\n And beats high mountain down.");
             Console.WriteLine("");
+            Thread.Sleep(600);
 
-
+            string response;
+            int count = 0;
             do
             {
                 Console.WriteLine("Enter your answer: ");
-                string response = Console.ReadLine();
-                int count = 0;
-                if (response == "Time" || response == "time")
+                response = Console.ReadLine();
+                response = response.ToLower();
+                if (response != "time")
                 {
-                    Console.WriteLine("Correct! You have successfully answered the riddle and may now pass through TweedleDee and TweedleDum's door");
+                    Console.WriteLine("That is not the correct answer, try again");
                     Console.WriteLine("");
-                    riddle = true;
+                    count++;
                 }
-                else
-                {
-                    for (int i = 0; i < 5; i++)
-                    {
-                        Console.WriteLine("That is not the correct answer, try again");
-                        Console.WriteLine("");
-                        count++;
-                    }
-
-                    GameOver(Items);
-                }
-
             }
-            while (riddle == false);
-                
+            while (response != "time" && count < 5);
+
+            if (count >= 5)
+            {
+                Console.WriteLine("You took too many tries! You lose");
+                GameOver(Items);
+            }
+            else
+            {
+                Console.WriteLine("Correct! You have successfully answered the riddle and may now pass through TweedleDee and TweedleDum's door");
+                Console.WriteLine("");
+                Console.ReadLine();
+                WinningGame(Items);
+            }
+        }
+
+
+
+        // This is the new method for winning the game //
+        public static void WinningGame(Inventory[] Items)
+        {
+            Console.WriteLine("Congratulations! You have won the game and thus emerge through TweedleDee and TweedleDum's door victorious.");
+
+            Console.WriteLine("Play again? Y/N");
+            string response = Console.ReadLine();
+            response = response.ToUpper();
+
+            //if statement to check answer
+            if (response == "Y")
+            {
+                Console.Clear();
+                Start(Items);
+                FirstRoom(Items);
+            }
+
+            else
+            {
+                Console.WriteLine("Thanks for playing!");
+                Console.ReadLine();
+                Environment.Exit(0);
+            }
         }
 
         public static void FifthRoomOpen(Inventory[] Items)
@@ -622,7 +711,11 @@ namespace GroupGame
                 case "west":
                 case "go west":
                 case "walk west":
-                    Console.WriteLine("back");
+                case "back":
+                case "turn around":
+                case "turn back":
+                case "go back":
+                    Console.WriteLine("You turn around and go back");
                     Console.WriteLine("");
                     Thread.Sleep(600);
                     SecondRoomOpen(Items);
@@ -680,7 +773,7 @@ namespace GroupGame
         }
         public static void ThreeDoorOpen(Inventory[] Items)
         {
-            Console.WriteLine("What now? Use north south east and west to navigate! Type help to get tips!");
+            Console.WriteLine("You face the three doors. Which door will you go in? Door 1, Door 2, or Door 3?");
             Console.WriteLine("");
             string response = Console.ReadLine();
             response = response.ToLower();
@@ -692,11 +785,27 @@ namespace GroupGame
                     break;
                 case "door2":
                 case "door 2":
-                    Door2(Items);
+                    Console.WriteLine("It is an empty broom closet");
+                    Console.ReadLine();
+                    ThreeDoorOpen(Items);
                     break;
                 case "door3":
                 case "door 3":
+                    Console.WriteLine("");
                     Door3(Items);
+                    break;
+                case "south":
+                case "back":
+                case "turn around":
+                case "turn back":
+                case "go back":
+                    Console.WriteLine("You turn around and go back");
+                    Console.ReadLine();
+                    FourthRoom(Items);
+                    break;
+                default:
+                    AliceDonotUnderstand();
+                    ThreeDoorOpen(Items);
                     break;
             }
         }
@@ -704,23 +813,16 @@ namespace GroupGame
 
         public static void Door1(Inventory[] Items)
         {
-            Console.WriteLine("");
-        }
-        public static void Door2(Inventory[] Items)
-        {
-            Console.WriteLine("You are in a closet");
-            Console.WriteLine("What now? Use north south east and west to navigate! Type help to get tips!");
-            string response = Console.ReadLine();
-            response = response.ToLower();
-            if(response=="look")
-            {
-                Console.WriteLine("The closet is empty. May be check out other doors");
-            }
-
+            Console.WriteLine("The white rabbit is there. He tells you a tip for dealing with Tweedle Dee and Tweedle Dum");
+            Console.WriteLine("He holds up his pocket watch and points at it. What could that mean?");
+            Console.WriteLine("He looks panicked and quickly ushers you back out the door");
+            Console.ReadLine();
+            ThreeDoorOpen(Items);
         }
         public static void Door3(Inventory[] Items)
         {
-
+            Console.WriteLine("You walk through the third door and see the Red Queen, she is furious!");
+            GameOver(Items);
         }
 
         public static void GameOver(Inventory[] Items)
@@ -728,10 +830,12 @@ namespace GroupGame
             //This is the game over screen method
             Console.WriteLine("The Red Queen got you! Off with your head!");
             Console.WriteLine("Game Over");
+            Console.WriteLine("");
 
             //ask to play again
             Console.WriteLine("Play again? Y/N");
             string response = Console.ReadLine();
+            response = response.ToUpper();
 
             //if statement to check answer
             if (response == "Y")
@@ -745,10 +849,7 @@ namespace GroupGame
             {
                 Console.WriteLine("Thanks for playing!");
                 Console.ReadLine();
-                Console.WriteLine("");
-                
-
-
+                Environment.Exit(0);
             }
         }
 
@@ -756,6 +857,7 @@ namespace GroupGame
         {
             // when user needs help with what they want to enter, use this method
             Console.WriteLine("Enter north(n), south(s), west(w), east(e) to get Alice to move about the area.");
+            Console.WriteLine("You can turn back too if you want!");
             Console.WriteLine("Use 'i' to check your inventory!");
             Console.WriteLine("Try to use 'look' to get a feel for your surroundings again");
             Console.WriteLine("To get some items, type 'get' + the name of the item you want to get.");
