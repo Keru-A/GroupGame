@@ -901,7 +901,11 @@ namespace GroupGame
 
         public static void ForestFour(Inventory[] Items)
         {
-            
+            Console.WriteLine("You venture onwards and notice sunlight shining through the foliage as the forest thins");
+            Console.WriteLine("You continue on feeling ever safer as you do so and come across a clearing...");
+            Console.WriteLine("");
+            string response = Console.ReadLine();
+            response = response.ToLower();
         }
 
         public static void Tips(Inventory[] Items)
