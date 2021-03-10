@@ -22,6 +22,7 @@ namespace GroupGame
         //big small boolean status effect, global variables to ensure they can function in every method
         public static bool big;
         public static bool small;
+        public static string Forestcheckpoint;
         static void Main()
         {
             //Inventory array called Items. Remember to reference in method to be able to use the inventory.
@@ -907,6 +908,54 @@ namespace GroupGame
             Console.WriteLine($"- {Items[5].Desc} -".PadRight(20));
         }
 
-        
+        // Notice: All the rooms which are after this room, should recall back to this checkpoint room //
+        public static void ForestFifthOpen(Inventory[] Items)
+        {
+            // avoid repeating the same opening introduction
+            
+            if (Forestcheckpoint == "5")
+            {
+                Console.WriteLine("You miss the path and walk back to the checkpoint room again. Don't give up!");
+            }
+            else
+            {
+                Console.WriteLine("This is a brand new checkpoint room!");  // Need story Here //
+                Forestcheckpoint = "5";
+            }
+
+            ForestFifth(Items);
+        }
+
+        public static void ForestFifth(Inventory[] Items)
+        {
+            //This is the method for the fifth location of the Forest
+
+            //Beginning the game with simple input
+            Console.WriteLine("You are in the fifth room of the forest. What will Alice do now? Type help to get tips!");
+            Console.WriteLine("");
+            string response = Console.ReadLine();
+            response = response.ToLower(); // convert input to lowercase for error control
+
+
+            //switch to interpert user input
+            switch (response)
+            {
+                //true direction to next room
+                case "west":
+                case "go west":
+                case "walk west":
+                    ForestSixthOpen(Items);
+                    break;
+
+                case "north":
+                    ForestFifthOpen(Items);
+                    break;
+
+                default:
+                    AliceDonotUnderstand();
+                    ForestFifth(Items);
+                    break;
+            }
+        }
     }
 }
