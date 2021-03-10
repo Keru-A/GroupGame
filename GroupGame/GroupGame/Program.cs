@@ -660,7 +660,7 @@ namespace GroupGame
                 Console.WriteLine("Correct! You have successfully answered the riddle and may now pass through TweedleDee and TweedleDum's door");
                 Console.WriteLine("");
                 Console.ReadLine();
-                WinningGame(Items);
+                ForestOneOpen(Items);
             }
         }
 
@@ -940,6 +940,7 @@ namespace GroupGame
                     Console.WriteLine("You take the northern path");
                     Console.WriteLine("The darkness surrounding you feels like it lifts as you get closer to the exit");
                     Console.WriteLine("");
+                    Thread.Sleep(600);
                     ForestTwo(Items);
                     break;
                 case "west":
@@ -948,6 +949,7 @@ namespace GroupGame
                     Console.WriteLine("You take the western path");
                     Console.WriteLine("The darkness of the forest fills your vision and you lose all sense of direction...");
                     Console.WriteLine("");
+                    Thread.Sleep(600);
                     ForestOne(Items);
                     break;
                 case "east":
@@ -956,6 +958,7 @@ namespace GroupGame
                     Console.WriteLine("You take the eastern path");
                     Console.WriteLine("The darkness of the forest fills your vision and you lose all sense of direction...");
                     Console.WriteLine("");
+                    Thread.Sleep(600);
                     ForestOne(Items);
                     break;
                 case "south":
@@ -964,6 +967,7 @@ namespace GroupGame
                     Console.WriteLine("You take the southern path");
                     Console.WriteLine("The darkness of the forest fills your vision and you lose all sense of direction...");
                     Console.WriteLine("");
+                    Thread.Sleep(600);
                     ForestOne(Items);
                     break;
                 case "i":
@@ -1007,7 +1011,8 @@ namespace GroupGame
                     Console.WriteLine("You take the northern path");
                     Console.WriteLine("The darkness of the forest fills your vision and you lose all sense of direction...");
                     Console.WriteLine("");
-                    ForestTwo(Items);
+                    Thread.Sleep(600);
+                    ForestOne(Items);
                     break;
                 case "west":
                 case "go west":
@@ -1015,7 +1020,8 @@ namespace GroupGame
                     Console.WriteLine("You take the western path");
                     Console.WriteLine("The darkness of the forest fills your vision and you lose all sense of direction...");
                     Console.WriteLine("");
-                    ForestTwo(Items);
+                    Thread.Sleep(600);
+                    ForestOne(Items);
                     break;
                 case "east": //correct direction
                 case "go east":
@@ -1023,6 +1029,7 @@ namespace GroupGame
                     Console.WriteLine("You take the eastern path");
                     Console.WriteLine("The darkness surrounding you feels like it lifts as you get closer to the exit");
                     Console.WriteLine("");
+                    Thread.Sleep(600);
                     //ForestThree?(Items);
                     break;
                 case "south":
@@ -1031,26 +1038,27 @@ namespace GroupGame
                     Console.WriteLine("You take the southern path");
                     Console.WriteLine("The darkness of the forest fills your vision and you lose all sense of direction...");
                     Console.WriteLine("");
-                    ForestTwo(Items);
+                    Thread.Sleep(600);
+                    ForestOne(Items);
                     break;
                 case "i":
                 case "inventory":
                 case "items":
                     InventoryDisplay(Items);
-                    ForestOne(Items);
+                    ForestTwo(Items);
                     break;
                 case "t":
                 case "tips":
                 case "help":
                     Tips(Items);
-                    ForestOne(Items);
+                    ForestTwo(Items);
                     break;
                 case "look":
-                    ForestOne(Items);
+                    ForestTwo(Items);
                     break;
                 default:
                     AliceDonotUnderstand();
-                    ForestOne(Items);
+                    ForestTwo(Items);
                     break;
             }
         }
