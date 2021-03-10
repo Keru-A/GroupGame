@@ -906,6 +906,21 @@ namespace GroupGame
             Console.WriteLine($"- {Items[5].Desc} -".PadRight(20));
         }
 
-        
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////
+        public static void Forest7(Inventory[] Items)
+        {
+            //This is the method for the seventh part of the forest
+            Console.WriteLine("You are now in ");
+            Thread.Sleep(600);
+            Console.WriteLine("Which way will you go?");
+            
+        }
+        public static void Forest8(Inventory[] Items)
+        {
+
+        }
+
+
     }
 }
