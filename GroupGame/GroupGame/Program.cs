@@ -854,6 +854,17 @@ namespace GroupGame
             }
         }
 
+
+        public static void ForestThree(Inventory[] Items)
+        {
+
+        }
+
+        public static void ForestFour(Inventory[] Items)
+        {
+
+        }
+
         public static void Tips(Inventory[] Items)
         {
             // when user needs help with what they want to enter, use this method
