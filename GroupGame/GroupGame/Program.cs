@@ -582,6 +582,7 @@ namespace GroupGame
                 case "walk west":
                     Console.WriteLine("There is nowhere to go in that direction");
                     Console.WriteLine("");
+                    FourthRoom(Items);
                     break;
                 case "east":
                 case "go east":
