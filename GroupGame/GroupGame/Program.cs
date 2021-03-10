@@ -841,8 +841,8 @@ namespace GroupGame
             if (response == "Y")
             {
                 Console.Clear();
-                Start(Items);
-                FirstRoom(Items);
+                Start(Items); 
+                //removed firstRoom method 
             }
 
             else
