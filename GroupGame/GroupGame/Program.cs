@@ -909,7 +909,18 @@ namespace GroupGame
 
         public static void ForestOneOpen(Inventory[] Items)
         {
-
+            Console.WriteLine("You breathe a sigh of relief as you step out the door past Tweedle Dee and Tweedle Dum, only to feel you stomach sink as you are faced with a dark and twisted forest\n" +
+                               "You tentatively walk forward, resigned to continue your journey when you hear a chuckle carrying across the wind");
+            Thread.Sleep(600);
+            Console.WriteLine("'Lost already are we?' a voice without a source spoke to you. You look about in confusion when a pair of eyes and a sharp toothed grin apparate infront of you\n" +
+                              "'You're only at the start! Wait till you're in the middle of those tangled woods' As the mouth sneered at you the body of a purple striped cat began to form around the terrifying grin\n" +
+                              "That forest is mischevious, and will send you back where you started if you explore too deep into the shadows!");
+            Console.WriteLine("You haven't begun to process the magic that has occured infront of you before the purple cat starts to disappear again, with just his mouth left visible to you he snarls again\n" +
+                              "Good luck!");
+            Thread.Sleep(600);
+            Console.WriteLine("With nowhere else to, you step into the shadowey forest");
+            Console.WriteLine("");
+            ForestOne(Items);
         }
         public static void ForestOne(Inventory[] Items)
         {
