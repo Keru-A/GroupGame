@@ -907,6 +907,10 @@ namespace GroupGame
             Console.WriteLine($"- {Items[5].Desc} -".PadRight(20));
         }
 
+        public static void Forest1(Inventory[] Items)
+        {
+
+        }
         
     }
 }
