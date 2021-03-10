@@ -288,7 +288,7 @@ namespace GroupGame
                 case "get cake":
                 case "pickup cake":
                 case "pick up cake":
-                    if (Items[3].Name == null && Items[3].Desc ==null)     // statement for removing item after player gets it
+                    if (Items[3].Name == null && Items[3].Desc == null)     // statement for removing item after player gets it
                     {
                         Items[3].Name = "Eat me cupcake";
                         Items[3].Desc = "It seems dosen't like normal cupcake.";
@@ -764,7 +764,7 @@ namespace GroupGame
                     break;
                 //lets user get a description of the room again in case they are lost
                 case "look":
-                    FifthRoomOpen(Items); 
+                    FifthRoomOpen(Items);
                     break;
                 default:
                     AliceDonotUnderstand();
@@ -870,7 +870,7 @@ namespace GroupGame
             //when user typing anything which is not in switch cases, use this method
             Random rand = new Random();
             int temp = rand.Next(1, 5);
-            switch(temp)
+            switch (temp)
             {
                 case 1:
                     Console.WriteLine("Alice is just a child. She doesn't understand what you said.");
@@ -907,7 +907,16 @@ namespace GroupGame
             Console.WriteLine($"- {Items[5].Desc} -".PadRight(20));
         }
 
-        public static void Forest1(Inventory[] Items)
+        public static void ForestOneOpen(Inventory[] Items)
+        {
+
+        }
+        public static void ForestOne(Inventory[] Items)
+        {
+
+        }
+
+        public static void ForestTwo(Inventory[] Items)
         {
 
         }
