@@ -929,7 +929,7 @@ namespace GroupGame
         {
             //This is the method for the fifth location of the Forest
 
-            //Beginning the game with simple input
+            //Beginning the room with simple input
             Console.WriteLine("You are in the fifth room of the forest. What will Alice do now? Type help to get tips!");
             Console.WriteLine("");
             string response = Console.ReadLine();
@@ -987,8 +987,8 @@ namespace GroupGame
         {
             //This is the method for the sixth location of the Forest
 
-            //Beginning the game with simple input
-            Console.WriteLine("You are in the fifth room of the forest. What will Alice do now? Type help to get tips!");
+            //Beginning the room with simple input
+            Console.WriteLine("You are in the sixth room of the forest. What will Alice do now? Type help to get tips!");
             Console.WriteLine("");
             string response = Console.ReadLine();
             response = response.ToLower(); // convert input to lowercase for error control
@@ -1018,7 +1018,7 @@ namespace GroupGame
                 case "turn around":
                 case "turn back":
                 case "go back":
-                    ForestFifthOpen(Items);
+                    ForestFifth(Items);
                     break;
 
                 case "south":
