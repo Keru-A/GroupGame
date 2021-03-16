@@ -980,7 +980,10 @@ namespace GroupGame
                     break;
             }
         }
+        public static void RiddleTwo(Inventory[]Items)
+        {
 
+        }
 
     }
 }
