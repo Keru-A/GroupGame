@@ -906,6 +906,81 @@ namespace GroupGame
             Console.WriteLine($"- {Items[5].Desc} -".PadRight(20));
         }
 
-        
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////
+        public static void Forest7(Inventory[] Items)
+        {
+            //This is the method for the seventh part of the forest
+            Console.WriteLine("You are now in ");
+            Thread.Sleep(600);
+            Console.WriteLine("Which way will you go?");
+            Console.WriteLine("");
+            
+        }
+
+            
+        public static void Forest8(Inventory[] Items)
+        {
+            Console.WriteLine("You are now in ");
+            Thread.Sleep(600);
+            Console.WriteLine("Which way will you go?");
+            Console.WriteLine("");
+            string response = Console.ReadLine();
+            response = response.ToLower();
+            switch (response)
+            {
+
+                case "north":
+                case "go north":
+                case "walk north":
+                    Console.WriteLine("");
+                    break;
+                case "west":
+                case "go west":
+                case "walk west":
+                    Console.WriteLine("");
+                    break;
+                case "east":
+                case "go east":
+                case "walk east":
+                    Console.WriteLine("");
+                    Console.WriteLine("You approach the funny looking twins, looks similar to the one you met at the castle last time");
+                    Console.WriteLine("Looks like they have riddle to ask you");
+                    Riddle(Items);
+                    break;
+                case "south":
+                case "go south":
+                case "walk south":
+                case "back":
+                case "turn around":
+                case "turn back":
+                case "go back":
+                    Console.WriteLine("You turn around and go back");
+                    Console.WriteLine("");
+                    Forest7(Items);
+                    break;
+                case "i":
+                case "inventory":
+                case "items":
+                    InventoryDisplay(Items);
+                    Forest8(Items);
+                    break;
+                case "t":
+                case "tips":
+                case "help":
+                    Tips(Items);
+                    Forest8(Items);
+                    break;
+                case "look":
+                    Forest8(Items); //lets user get a description of the room again
+                    break;
+                default:
+                    AliceDonotUnderstand();
+                    Forest8(Items);
+                    break;
+            }
+        }
+
+
     }
 }
