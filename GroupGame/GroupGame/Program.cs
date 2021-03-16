@@ -110,7 +110,7 @@ namespace GroupGame
                 "feel your feet touch the floor.");
             Console.ReadLine();
             Console.Clear();
-            FirstRoomOpen(Items);
+            ForestFifthOpen(Items);
         }
 
         public static void FirstRoomOpen(Inventory[] Items)
@@ -940,20 +940,97 @@ namespace GroupGame
             //switch to interpert user input
             switch (response)
             {
-                //true direction to next room
+                //correct direction to next room
                 case "west":
                 case "go west":
                 case "walk west":
                     ForestSixthOpen(Items);
                     break;
 
+                //other directions
                 case "north":
-                    ForestFifthOpen(Items);
+                case "go north":
+                case "walk north":
+                    ForestFifth(Items);
+                    break;
+
+                case "east":
+                case "go east":
+                case "walk east":
+                case "back":
+                case "turn around":
+                case "turn back":
+                case "go back":
+                    ForestFourthOpen(Items);
+                    break;
+
+                case "south":
+                case "go south":
+                case "walk south":
+                    ForestFifth(Items);
                     break;
 
                 default:
                     AliceDonotUnderstand();
                     ForestFifth(Items);
+                    break;
+            }
+        }
+        public static void ForestSixthOpen(Inventory[] Items)
+        {
+            //story needs here!
+            Console.WriteLine("Story");
+            Console.WriteLine("");
+            ForestSixth(Items);
+        }
+
+        public static void ForestSixth(Inventory[] Items)
+        {
+            //This is the method for the sixth location of the Forest
+
+            //Beginning the game with simple input
+            Console.WriteLine("You are in the fifth room of the forest. What will Alice do now? Type help to get tips!");
+            Console.WriteLine("");
+            string response = Console.ReadLine();
+            response = response.ToLower(); // convert input to lowercase for error control
+
+
+            //switch to interpert user input
+            switch (response)
+            {
+                //correct direction to next room
+                case "west":
+                case "go west":
+                case "walk west":
+                    ForestSeventhOpen(Items);
+                    break;
+
+                //other directions
+                case "north":
+                case "go north":
+                case "walk north":
+                    ForestFifthOpen(Items);
+                    break;
+
+                case "east":
+                case "go east":
+                case "walk east":
+                case "back":
+                case "turn around":
+                case "turn back":
+                case "go back":
+                    ForestFifthOpen(Items);
+                    break;
+
+                case "south":
+                case "go south":
+                case "walk south":
+                    ForestFifthOpen(Items);
+                    break;
+
+                default:
+                    AliceDonotUnderstand();
+                    ForestSixth(Items);
                     break;
             }
         }
