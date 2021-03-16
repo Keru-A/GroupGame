@@ -659,17 +659,23 @@ namespace GroupGame
                 Console.WriteLine("Correct! You have successfully answered the riddle and may now pass through TweedleDee and TweedleDum's door");
                 Console.WriteLine("");
                 Console.ReadLine();
+                
+                /*
                 WinningGame(Items);
+                */
             }
         }
 
 
 
         // This is the new method for winning the game //
+
+        /*
         public static void WinningGame(Inventory[] Items)
         {
             Console.WriteLine("Congratulations! You have won the game and thus emerge through TweedleDee and TweedleDum's door victorious.");
 
+            
             Console.WriteLine("Play again? Y/N");
             string response = Console.ReadLine();
             response = response.ToUpper();
@@ -689,6 +695,8 @@ namespace GroupGame
                 Environment.Exit(0);
             }
         }
+
+        */
 
         public static void FifthRoomOpen(Inventory[] Items)
         {
@@ -851,6 +859,52 @@ namespace GroupGame
                 Console.ReadLine();
                 Environment.Exit(0);
             }
+        }
+
+
+        public static void ForestThree(Inventory[] Items)
+        {
+            Console.WriteLine("You progress further into the forest and are once again faced with 4 different paths, which way will you go?");
+            Console.WriteLine("");
+            string response = Console.ReadLine();
+            response = response.ToLower();
+
+            switch (response)
+            {
+                case "east":
+                case "go east":
+                case "walk east":
+                    Console.WriteLine("The forest is far too dense, this way is not traversable!");
+                    ForestThree(Items);
+                    break;
+                case "south":
+                case "go south":
+                case "walk south":
+                    Console.WriteLine("The forest is far too dense, this way is not traversable!");
+                    ForestThree(Items);
+                    break;
+                case "west":
+                case "go west":
+                case "walk west":
+                    Console.WriteLine("");
+                    break;
+                case "north":
+                case "go north":
+                case "walk north":
+                    Console.WriteLine("This way doesn't look too foreboding...");
+                    Console.WriteLine("After this new found feeling of security you decide to proceed with caution, it always pays to keep your guard up...");
+                    ForestFour(Items);
+                    break;
+            }
+        }
+
+        public static void ForestFour(Inventory[] Items)
+        {
+            Console.WriteLine("You venture onwards and notice sunlight shining through the foliage as the forest thins");
+            Console.WriteLine("You continue on feeling ever safer as you do so and come across a clearing...");
+            Console.WriteLine("");
+            string response = Console.ReadLine();
+            response = response.ToLower();
         }
 
         public static void Tips(Inventory[] Items)
