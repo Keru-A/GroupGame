@@ -994,7 +994,7 @@ namespace GroupGame
             Console.WriteLine("You haven't begun to process the magic that has occured infront of you before the purple cat starts to disappear again, with just his mouth left visible to you he snarls again\n" +
                               "Good luck!");
             Thread.Sleep(600);
-            Console.WriteLine("With nowhere else to, you step into the shadowey forest");
+            Console.WriteLine("With nowhere else to go, you step into the shadowy forest");
             Console.WriteLine("");
             ForestOne(Items);
         }
