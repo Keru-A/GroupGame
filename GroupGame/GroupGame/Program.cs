@@ -287,7 +287,7 @@ namespace GroupGame
                 case "get cake":
                 case "pickup cake":
                 case "pick up cake":
-                    if (Items[3].Name == null && Items[3].Desc ==null)     // statement for removing item after player gets it
+                    if (Items[3].Name == null && Items[3].Desc == null)     // statement for removing item after player gets it
                     {
                         Items[3].Name = "Eat me cupcake";
                         Items[3].Desc = "It seems dosen't like normal cupcake.";
@@ -581,6 +581,7 @@ namespace GroupGame
                 case "walk west":
                     Console.WriteLine("There is nowhere to go in that direction");
                     Console.WriteLine("");
+                    FourthRoom(Items);
                     break;
                 case "east":
                 case "go east":
@@ -659,7 +660,7 @@ namespace GroupGame
                 Console.WriteLine("Correct! You have successfully answered the riddle and may now pass through TweedleDee and TweedleDum's door");
                 Console.WriteLine("");
                 Console.ReadLine();
-                WinningGame(Items);
+                ForestOneOpen(Items);
             }
         }
 
@@ -763,7 +764,7 @@ namespace GroupGame
                     break;
                 //lets user get a description of the room again in case they are lost
                 case "look":
-                    FifthRoomOpen(Items); 
+                    FifthRoomOpen(Items);
                     break;
                 default:
                     AliceDonotUnderstand();
@@ -869,7 +870,7 @@ namespace GroupGame
             //when user typing anything which is not in switch cases, use this method
             Random rand = new Random();
             int temp = rand.Next(1, 5);
-            switch(temp)
+            switch (temp)
             {
                 case 1:
                     Console.WriteLine("Alice is just a child. She doesn't understand what you said.");
@@ -982,5 +983,161 @@ namespace GroupGame
         }
 
 
+        public static void ForestOneOpen(Inventory[] Items)
+        {
+            Console.WriteLine("You breathe a sigh of relief as you step out the door past Tweedle Dee and Tweedle Dum, only to feel you stomach sink as you are faced with a dark and twisted forest\n" +
+                               "You tentatively walk forward, resigned to continue your journey when you hear a chuckle carrying across the wind");
+            Thread.Sleep(600);
+            Console.WriteLine("'Lost already are we?' a voice without a source spoke to you. You look about in confusion when a pair of eyes and a sharp toothed grin apparate infront of you\n" +
+                              "'You're only at the start! Wait till you're in the middle of those tangled woods' As the mouth sneered at you the body of a purple striped cat began to form around the terrifying grin\n" +
+                              "That forest is mischevious, and will send you back where you started if you explore too deep into the shadows!");
+            Console.WriteLine("You haven't begun to process the magic that has occured infront of you before the purple cat starts to disappear again, with just his mouth left visible to you he snarls again\n" +
+                              "Good luck!");
+            Thread.Sleep(600);
+            Console.WriteLine("With nowhere else to go, you step into the shadowy forest");
+            Console.WriteLine("");
+            ForestOne(Items);
+        }
+        public static void ForestOne(Inventory[] Items)
+        {
+            Console.WriteLine("You are at the beginning of the forest...");
+            Console.WriteLine("Which path will you take?");
+            Console.WriteLine("");
+            string response = Console.ReadLine();
+            response = response.ToLower();
+
+            switch (response)
+            {
+
+                case "north": //correct direction
+                case "go north":
+                case "walk north":
+                case "door":
+                    Console.WriteLine("You take the northern path");
+                    Console.WriteLine("The darkness surrounding you feels like it lifts as you get closer to the exit");
+                    Console.WriteLine("");
+                    Thread.Sleep(600);
+                    ForestTwo(Items);
+                    break;
+                case "west":
+                case "go west":
+                case "walk west":
+                    Console.WriteLine("You take the western path");
+                    Console.WriteLine("The darkness of the forest fills your vision and you lose all sense of direction...");
+                    Console.WriteLine("");
+                    Thread.Sleep(600);
+                    ForestOne(Items);
+                    break;
+                case "east":
+                case "go east":
+                case "walk east":
+                    Console.WriteLine("You take the eastern path");
+                    Console.WriteLine("The darkness of the forest fills your vision and you lose all sense of direction...");
+                    Console.WriteLine("");
+                    Thread.Sleep(600);
+                    ForestOne(Items);
+                    break;
+                case "south":
+                case "go south":
+                case "walk south":
+                    Console.WriteLine("You take the southern path");
+                    Console.WriteLine("The darkness of the forest fills your vision and you lose all sense of direction...");
+                    Console.WriteLine("");
+                    Thread.Sleep(600);
+                    ForestOne(Items);
+                    break;
+                case "i":
+                case "inventory":
+                case "items":
+                    InventoryDisplay(Items);
+                    ForestOne(Items);
+                    break;
+                case "t":
+                case "tips":
+                case "help":
+                    Tips(Items);
+                    ForestOne(Items);
+                    break;
+                case "look":
+                    ForestOne(Items);
+                    break;
+                default:
+                    AliceDonotUnderstand();
+                    ForestOne(Items);
+                    break;
+            }
+
+        }
+
+        public static void ForestTwo(Inventory[] Items)
+        {
+            Console.WriteLine("You are in the second part of the forest...");
+            Console.WriteLine("Which path will you take?");
+            Console.WriteLine("");
+            string response = Console.ReadLine();
+            response = response.ToLower();
+
+            switch (response)
+            {
+
+                case "north": 
+                case "go north":
+                case "walk north":
+                case "door":
+                    Console.WriteLine("You take the northern path");
+                    Console.WriteLine("The darkness of the forest fills your vision and you lose all sense of direction...");
+                    Console.WriteLine("");
+                    Thread.Sleep(600);
+                    ForestOne(Items);
+                    break;
+                case "west":
+                case "go west":
+                case "walk west":
+                    Console.WriteLine("You take the western path");
+                    Console.WriteLine("The darkness of the forest fills your vision and you lose all sense of direction...");
+                    Console.WriteLine("");
+                    Thread.Sleep(600);
+                    ForestOne(Items);
+                    break;
+                case "east": //correct direction
+                case "go east":
+                case "walk east":
+                    Console.WriteLine("You take the eastern path");
+                    Console.WriteLine("The darkness surrounding you feels like it lifts as you get closer to the exit");
+                    Console.WriteLine("");
+                    Thread.Sleep(600);
+                    //ForestThree?(Items);
+                    break;
+                case "south":
+                case "go south":
+                case "walk south":
+                    Console.WriteLine("You take the southern path");
+                    Console.WriteLine("The darkness of the forest fills your vision and you lose all sense of direction...");
+                    Console.WriteLine("");
+                    Thread.Sleep(600);
+                    ForestOne(Items);
+                    break;
+                case "i":
+                case "inventory":
+                case "items":
+                    InventoryDisplay(Items);
+                    ForestTwo(Items);
+                    break;
+                case "t":
+                case "tips":
+                case "help":
+                    Tips(Items);
+                    ForestTwo(Items);
+                    break;
+                case "look":
+                    ForestTwo(Items);
+                    break;
+                default:
+                    AliceDonotUnderstand();
+                    ForestTwo(Items);
+                    break;
+            }
+        }
+        
     }
 }
